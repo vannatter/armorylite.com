@@ -1,0 +1,7 @@
+
+syntax: regexp
+^app/tmp$
+syntax: regexp
+^app/config/config\.php$
+syntax: regexp
+^app/config/database\.php$
