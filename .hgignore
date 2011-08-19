@@ -5,3 +5,6 @@ syntax: regexp
 ^app/config/config\.php$
 syntax: regexp
 ^app/config/database\.php$
+syntax: regexp
+^app/webroot/icons$
+
