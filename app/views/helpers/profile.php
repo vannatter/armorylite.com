@@ -47,6 +47,12 @@
 		        }		
             	
 				echo "</div>";
+			} else {
+				
+				echo "<div data-slot=\"" . $short . "\" class=\"slot slot_0 slot_color_0\">";
+		        echo $short;
+				echo "</div>";
+				
 			}
 			
 		}
