@@ -9,6 +9,5 @@
       		return $this->find('first', array('conditions' => array('Info.character_id' => $character_id), 'order' => array('Info.id DESC')));
     	}
     	
-    	
 	}
 ?>

@@ -796,6 +796,7 @@ I {
   padding: 2px;
   clear: both;
   background-color: <?=$color_16;?>;
+  overflow: hidden;
 }
 
 #stats_char {
@@ -1215,7 +1216,6 @@ I {
   text-decoration: none;
 }
 
-  
 
 /*****************************************************************************************/
 .stats_head_on {

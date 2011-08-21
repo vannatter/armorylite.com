@@ -61,6 +61,7 @@
 				$gems = array();
 				$enchants = array();
 				$reforges = array();
+				$tinkers = array();
 				
 				foreach ($data->$obj->tooltipParams as $k=>$v) {
 	
@@ -128,6 +129,26 @@
 					}
 					// /enchant processing /////////////////////////////////////////////////////////////////
 					
+					// tinker processing ///////////////////////////////////////////////////////////////////
+					if (substr($k, 0, 3) == "tin") {
+						
+						$enchant = $this->Enchants->getEnchant($v);
+						if (!$enchant['Enchants']['id']) {
+							$enchant_name = $this->Curl->getEnchant($v);
+							if ($enchant_name) {
+								$enchant = $this->Enchants->addEnchant($v, $enchant_name);
+							}
+						}
+						
+						if ($enchant['Enchants']['id'])	{
+							$tmp = array();
+							$tmp["name"] = $enchant['Enchants']['name'];
+							$tmp["id"] = $enchant['Enchants']['enchant_id'];
+							$tinkers[] = $tmp;
+						}
+					}
+					// /tinker processing /////////////////////////////////////////////////////////////////					
+					
 				}	
 				
 				$data->$obj->icon_path = $this->Curl->getIcon($data->$obj->icon);
@@ -139,6 +160,9 @@
 				}
 				if ($enchants) {
 					$data->$obj->enchants = $enchants;
+				}				
+				if ($tinkers) {
+					$data->$obj->tinkers = $tinkers;
 				}				
 				$gear[$obj] = $data->$obj;
 			}

@@ -8,6 +8,9 @@
     	
 		function index ($region, $realm="*", $toon="*", $page="m") {
 			
+			$this->set('root_url', 'http://armorylite.com/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon));
+			$this->set('region', $region);
+			
 			if ($realm == "*") {
 				echo "this should trigger region browsing..";
 				exit;
@@ -103,6 +106,8 @@
 
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					$this->set('gear', $gear);
+					
+					$this->set('is_anon', false);
 					
 				} else {
 					
