@@ -7,4 +7,3 @@ syntax: regexp
 ^app/config/database\.php$
 syntax: regexp
 ^app/webroot/icons$
-

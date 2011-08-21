@@ -1,8 +1,10 @@
-<?php
-  class CommonHelper extends Helper {
-    function dateToWords($seconds) {
-      date_default_timezone_set("EST");
-      $new_seconds = strtotime("now") - $seconds;
+<?
+  
+	class CommonHelper extends Helper {
+		
+    	function dateToWords($seconds) {
+      		date_default_timezone_set("EST");
+      		$new_seconds = strtotime("now") - $seconds;
       
       $days = intval(intval($new_seconds) / (3600*24));
       $hours = intval(intval($new_seconds) / 3600);
