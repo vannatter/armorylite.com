@@ -70,7 +70,19 @@
 					<div class="sub3">
 						Achievement Points: <?= $d->achievementPoints; ?> (<?= count($d->achievements->achievementsCompleted); ?> complete)
 					</div>
-				<? } ?>				
+				<? } ?>		
+				
+				<? if ( (count(@$d->companions)>0) || (count(@$d->mounts)>0) ) { ?>
+					<div class="sub3">
+						<? if (count(@$d->companions)>0) { ?>
+							Companions: <?= count(@$d->companions); ?>
+						<? } ?>
+						<? if ( (count(@$d->companions)>0) && (count(@$d->mounts)>0) ) { ?> - <? } ?>
+						<? if (count(@$d->mounts)>0) { ?>
+							Mounts: <?= count(@$d->mounts); ?>
+						<? } ?>
+					</div>
+				<? } ?>		
 				
 			  </div>
 			  <div id="stats_char_right">
@@ -88,12 +100,14 @@
 					<?= $this->Profile->getPower($d->stats->powerType, $d->stats->power); ?>
 				</div>
 
-			    <? //include("bit_char_professiongrid.php"); ?>
+				<?= $this->Profile->getProfessions($d->professions); ?>
 			  </div>
 			</div>
           
-            <? // $this->print_stats_arena(); ?>
-            <? // $this->print_stats_base(); ?>
+			<?= $this->element('profile/arena', array($d)); ?>
+			<?= $this->element('profile/base', array($d)); ?>
+			<?= $this->element('profile/melee', array($d)); ?>
+          
             <? // $this->print_stats_melee(); ?>
             <? // $this->print_stats_ranged(); ?>
             <? // $this->print_stats_spell(); ?>

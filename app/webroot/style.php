@@ -349,6 +349,7 @@ PRE {
   padding: 3px;
   font-size: 11px;
   text-align: left;
+  color: #fff;
 }
 
 .darkenBackground { 
@@ -807,7 +808,7 @@ I {
   text-align: left; 
 }
 
-#stats_arena, #stats_base, #stats_melee, #stats_ranged, #stats_spell, #stats_defense, #stats_networking, #stats_saved {
+.stat_block {
   margin-top: 0px;
   clear: both;
 }
@@ -1257,6 +1258,34 @@ I {
   border-right: 1px dotted <?=$color_31;?>;
   border-bottom: 1px dotted <?=$color_31;?>;
 }
+
+.stat_table {
+	font-size: 11px;
+	margin-top: 10px;
+	border: 1px dotted <?=$color_28;?>;
+}
+
+.stat_table td {
+	margin: 1px;
+	padding: 4px;
+}
+
+.stat_table .stat_table_hdr {
+	background-color: #222;
+	padding: 6px;
+	text-align: left;
+	font-weight: bold;
+	color: #fff;
+}
+
+.stat_table th {
+	padding: 6px;
+	text-align: left;
+	background-color: <?=$color_29;?>;
+	font-weight: normal;
+}
+
+
 
 .stats_item {
   text-align: left;
@@ -1819,7 +1848,17 @@ I {
   }
   
 
+  .stat_header_on {
+    color: <?=$color_78;?> !important;
+    background-color: <?=$color_79;?> !important;
+  	border: 1px dotted <?=$color_80;?> !important;
+  }
+  
+
 /********************* SKILLS DEFINITION ***********************************************/
+
+
+
 #skills {
   width: 600px;
 }

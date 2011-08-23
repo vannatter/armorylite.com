@@ -94,7 +94,7 @@
 			if (is_array($professions->primary)) {
 				foreach ($professions->primary as $pro) {
 			    	$s .= "<div class=\"prof\">";
-			        $s .= $pro->name . " - " . $pro->rank . "/" . $pro->max;
+			        $s .= $pro->name . " - " . $pro->rank;
 			      	$s .= "</div>";
 				}
 			}
