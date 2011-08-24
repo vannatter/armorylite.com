@@ -283,5 +283,43 @@
 			return $s;			
 		}		
 		
+		function getExpander($class) {
+			$s = "";
+			switch ($class) {
+				case 1:
+					$s = "'melee', 'base'";
+					break;
+				case 2:
+					$s = "'spell', 'base'";
+					break;
+				case 3:
+					$s = "'ranged', 'base'";
+					break;
+				case 4:
+					$s = "'melee', 'base'";
+					break;
+				case 5:
+					$s = "'spell', 'base'";
+					break;
+				case 6:
+					$s = "'melee', 'base'";
+					break;
+				case 7:
+					$s = "'spell', 'base'";
+					break;
+				case 8:
+					$s = "'spell', 'base'";
+					break;
+				case 9:
+					$s = "'spell', 'base'";
+					break;
+				case 11:
+					$s = "'spell', 'base'";
+					break;
+			}
+			return $s;			
+		}		
+		
+		
 	}
 ?>

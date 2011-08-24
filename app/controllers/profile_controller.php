@@ -15,14 +15,14 @@
 			$settings->page = $page;
 			$settings->is_archive = false;
 			$settings->is_saved = false;
-			$settings->lite_url = 'http://armorylite.com/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon);
+			$settings->lite_url = '/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon);
 			$settings->anon = false;
 			$settings->query_string = "";
-			$settings->z = strtolower($region);
-			$settings->r = strtolower($realm);
-			$settings->n = strtolower($toon);
+			$settings->z = $region;
+			$settings->r = $realm;
+			$settings->n = $toon;
 			
-			$this->set('root_url', 'http://armorylite.com/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon));
+			$this->set('root_url', '/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon));
 			$this->set('region', $region);
 			
 			if ($realm == "*") {
@@ -106,6 +106,9 @@
 					
 					$this->set('d', $parsed_data);
 					$debug = "new shit, not using cache<br/>";
+					
+					$gear = $this->Profile->buildGearSet($parsed_data->items);
+					$this->set('gear', $gear);
 					$this->set('debug', $debug);
 					$this->set('set', $settings);
 					

@@ -11,6 +11,7 @@
 		<?= $scripts_for_layout . "\n"; ?>
 		<?= $html->meta('keywords', ((@$meta_keywords) ? @$meta_keywords:"ArmoryLite, Armory, WoW, World of Warcraft, World of Warcraft Armory, Armory Alternative, Lightweight Armory")); ?>
 		<?= $html->meta('description', ((@$meta_description) ? @$meta_description:"Armory Lite is a World of Warcraft Armory alternative: lightweight, browser-friendly and bonus features.")); ?>
+    	<script language="javascript" type="text/javascript" src="http://www.wowhead.com/widgets/power.js"></script>
 		
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -33,12 +34,11 @@
 				<?= $content_for_layout; ?>
 			</div>
 
-			<? if (@$debug) { ?>
-				<div class="debug"><?= $debug; ?></div>
-			<? } ?>
-			
 			<? if(Configure::read('Settings.site_mode') == 2) { ?><div id="sql_log_frame"><div id="sql_log_frame_tab">Show Debug Log</div><div class="sql_log_content"><?php echo $this->element('sql_dump'); ?></div></div><? } ?>
 		</body>
 	</div>
 		
 </html>
+
+<!-- Armorylite.com - a conflct.com gaming network production <?=date("Y");?> -->
+<!-- All information property of Blizzard Entertainment            -->

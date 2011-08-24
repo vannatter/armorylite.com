@@ -129,12 +129,17 @@
         </div>
         
       </div>
-  
-      <? //include_once("foot.php"); ?>
+      
+		<?= $this->element('navigation/profile_bot', array($d)); ?>
     </div>
     
-<!-- 
-    <pre style="background-color: teal;">
-    	<? print_r($d); ?>
-    </pre>
- -->    
+    <div class="page_ad">
+      <?= $this->Common->show_ad("homepage","tall"); ?>      
+    </div>      
+    
+	<script language="javascript">
+		$(document).ready(function() {
+			expandem(<?= $this->Profile->getExpander($d->class); ?>);
+		});
+	</script>
+

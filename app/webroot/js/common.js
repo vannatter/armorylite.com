@@ -46,3 +46,10 @@ $(document).ready(function() {
 	});
 	
 });
+
+function expandem(a, b) {
+	$('#stats_head_'+a).addClass('stats_head_on').removeClass('stats_head_off');
+	$('#stats_head_'+b).addClass('stats_head_on').removeClass('stats_head_off');
+	$('#stats_main_'+a).fadeIn();
+	$('#stats_main_'+b).fadeIn();
+}	

@@ -1540,13 +1540,13 @@ I {
 #char_bot {
   margin-left: auto; 
   margin-right: auto; 
-  text-align: center;
   width: 180px;
   clear: both;
   vertical-align: top;
   padding-top: 2px;
   margin-top: 8px;
   height: 36px;
+  padding-left: 40px;
 }
 
 .horiz {
