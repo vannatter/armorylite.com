@@ -107,11 +107,10 @@
 			<?= $this->element('profile/arena', array($d)); ?>
 			<?= $this->element('profile/base', array($d)); ?>
 			<?= $this->element('profile/melee', array($d)); ?>
+			<?= $this->element('profile/ranged', array($d)); ?>
           
-            <? // $this->print_stats_melee(); ?>
             <? // $this->print_stats_ranged(); ?>
             <? // $this->print_stats_spell(); ?>
-            <? // $this->print_stats_defense(); ?>
             <? // $this->print_stats_networking(); ?>
           </div>
           <div id="char_bot">

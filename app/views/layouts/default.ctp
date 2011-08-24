@@ -24,14 +24,21 @@
 		  })();
 		</script>
 	</head>
-  
-	<body>
-		<?= $session->flash(); ?>
-		<div id="content" class="<?= ((@$page_css) ? @$page_css:"home"); ?>">
-			<?= $content_for_layout; ?>
-		</div>
-
-		<? if(Configure::read('Settings.site_mode') == 2) { ?><div id="sql_log_frame"><div id="sql_log_frame_tab">Show Debug Log</div><div class="sql_log_content"><?php echo $this->element('sql_dump'); ?></div></div><? } ?>
-	</body>
 	
+	<div id="AL">
+    	<div id="darkBackgroundLayer" class="darkenBackground" style="visibility: hidden; display: none;"></div>
+		<body>
+			<?= $session->flash(); ?>
+			<div id="content" class="<?= ((@$page_css) ? @$page_css:"armorylite"); ?>">
+				<?= $content_for_layout; ?>
+			</div>
+
+			<? if (@$debug) { ?>
+				<div class="debug"><?= $debug; ?></div>
+			<? } ?>
+			
+			<? if(Configure::read('Settings.site_mode') == 2) { ?><div id="sql_log_frame"><div id="sql_log_frame_tab">Show Debug Log</div><div class="sql_log_content"><?php echo $this->element('sql_dump'); ?></div></div><? } ?>
+		</body>
+	</div>
+		
 </html>

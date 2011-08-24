@@ -19,7 +19,7 @@
 				exit;
 			} else {
 				$character = $this->Characters->getByPath($region, $realm, $toon);
-				$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . $realm . "/" . $toon . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions";
+				$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . $realm . "/" . $toon . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
 				
 				list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
 				
@@ -102,12 +102,13 @@
 					$parsed_data = json_decode($data['Info']['data']);
 									
 					$this->set('d', $parsed_data);
-					echo "not modified, using cache";
+					$debug = "not modified, using cache<br/>";
 
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					$this->set('gear', $gear);
 					
 					$this->set('is_anon', false);
+					$this->set('debug', $debug);
 					
 				} else {
 					

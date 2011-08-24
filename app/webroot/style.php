@@ -1492,14 +1492,14 @@ I {
 }
 
 /***************************************************************************************/
-#armorylite {
+.armorylite {
   margin-left: auto; 
   margin-right: auto; 
   width: 750px;
   min-height: 100%;
 }
 
-#armorylite_wide {
+.armorylite_wide {
   margin-left: auto; 
   margin-right: auto; 
   min-height: 100%;
@@ -2889,4 +2889,10 @@ I {
   text-align: left;
   clear: both;
   float: left;
+}
+
+.debug {
+	clear: both;
+	border: 1px solid red;
+	font-size: 11px;
 }
