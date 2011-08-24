@@ -43,5 +43,21 @@
       exit;
     }
     
+    
+    function scrubRealm($realm) {
+    	$tmp = $realm;
+    	$tmp = strtolower(trim($tmp));
+    	$tmp = str_replace(" ", "-", $tmp);
+    	$tmp = str_replace("'", "", $tmp);
+    	return $tmp;
+    }
+    
+    function scrubToon($toon) {
+    	$tmp = $toon;
+    	$tmp = strtolower(trim($tmp));
+    	return $tmp;
+    }
+    
+    
   }
 ?>

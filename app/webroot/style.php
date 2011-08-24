@@ -1268,6 +1268,7 @@ I {
 .stat_table td {
 	margin: 1px;
 	padding: 4px;
+	color: #ccc;
 }
 
 .stat_table .stat_table_hdr {
@@ -1283,6 +1284,7 @@ I {
 	text-align: left;
 	background-color: <?=$color_29;?>;
 	font-weight: normal;
+	color: #aaa;
 }
 
 
@@ -1325,6 +1327,21 @@ I {
   width: 20px;
   display: block;
   float: left;
+}
+
+.top_root_mnu {
+	cursor: pointer !important;
+}
+
+.mnu_list {
+	border: 1px solid <?=$color_15;?>;
+	clear: both;
+	position: absolute;
+	z-index: 400;
+	width: 130px;
+	cursor: pointer;
+	margin-left: 3px;
+	margin-top: 2px;
 }
 
 #navigation .my_on {
@@ -1387,7 +1404,7 @@ I {
 
 #navigation #my_nav {
   z-index: 300;
-  position: relative;
+  position: absolute;
 }
 
 #my_block {
@@ -1427,7 +1444,7 @@ I {
   z-index: 300;
 }
 
-.my_ele_on {
+.my_ele:hover {
   background-color: <?=$color_106;?>;
   display: block;
   padding: 1px;
@@ -1438,7 +1455,7 @@ I {
   z-index: 300;
 }
 
-#navigation .my_off .my_ele_on A {
+#navigation .my_off .my_ele:hover A {
   color: <?=$color_107;?>;
 }
 

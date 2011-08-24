@@ -71,10 +71,11 @@
       		if (file_exists($local_path)) {
         		return $web_path;        
       		} else {
-        		$wowhead_img = "http://static.wowhead.com/images/wow/icons/medium/" . strtolower($icon_name) . ".jpg";
+//        		$wowhead_img = "http://static.wowhead.com/images/wow/icons/medium/" . strtolower($icon_name) . ".jpg";
+        		$bnet_img = "http://us.media.blizzard.com/wow/icons/36/" . strtolower($icon_name) . ".jpg";
         
         		$ch = curl_init();
-		        curl_setopt ($ch, CURLOPT_URL, $wowhead_img);
+		        curl_setopt ($ch, CURLOPT_URL, $bnet_img);
 		        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 		        curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 0);
 		        $fc = curl_exec($ch);

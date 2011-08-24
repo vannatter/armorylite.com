@@ -3,20 +3,35 @@ $(document).ready(function() {
 	$('.slot').hoverIntent({
 		sensitivity: 3,
 		interval: 200,
-		over: showmenu, 
+		over: show_slot_menu, 
 		timeout: 100,
-		out: hidemenu	
+		out: hide_slot_menu	
 	});
-	
-	function showmenu() {
+	function show_slot_menu() {
 		var s = $(this).attr("data-slot");
 		$('#mnu_'+s).show();
 	}
-	
-	function hidemenu() {
+	function hide_slot_menu() {
 		var s = $(this).attr("data-slot");
 		$('#mnu_'+s).hide();
 	}
+	
+	$('.top_root_mnu').hoverIntent({
+		sensitivity: 3,
+		interval: 100,
+		over: show_top_menu, 
+		timeout: 100,
+		out: hide_top_menu	
+	});
+	function show_top_menu() {
+		var s = $(this).attr("data-showmnu");
+		$('#mnu_'+s).fadeIn();
+	}
+	function hide_top_menu() {
+		var s = $(this).attr("data-showmnu");
+		$('#mnu_'+s).hide();
+	}	
+	
 	
 	$('.stats_toggle').click(function() {
 		var i = $(this).attr('data-statname');

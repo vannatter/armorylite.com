@@ -26,7 +26,11 @@
           	<td class="stats_item stats_lbl"><?= __('Armor'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->armor;?></td>
         </tr>
         <tr class="stats_item">
-          	<td class="stats_item stats_lbl"><?= __('Mastery'); ?>:</td><td colspan="5" class="stats_item stats_val"><?= $d->stats->masteryRating; ?> (<?= round($d->stats->mastery,2); ?>%)</td>
+          	<td class="stats_item stats_lbl"><?= __('Mastery'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->masteryRating; ?></td>
+          	<td width=20></td>
+          	<td class="stats_item stats_lbl"><?= __('Mastery %'); ?>:</td><td class="stats_item stats_val"><?= round($d->stats->mastery,2); ?></td>
+          	<td width=20></td>
+          	<td class="stats_item stats_lbl"><?= __('Haste'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->hasteRating; ?></td>
         </tr>
 	</table>
 	<br/>

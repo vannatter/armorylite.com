@@ -10,7 +10,6 @@
     	}
     	
     	function getByPath($region, $realm, $toon) {
-    		$realm = str_replace("-", " ", $realm);
       		return $this->find('first', array('conditions' => array('Characters.Region' => $region, 'Characters.Server' => $realm, 'Characters.Toon' => $toon)));
     	}
     

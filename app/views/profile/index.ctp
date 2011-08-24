@@ -1,6 +1,6 @@
-    <div class="profile_content">
+	<div class="profile_content">
 
-      <? // include_once("navigation.php"); ?>
+		<?= $this->element('navigation/profile_top', array($d)); ?>
 
       <div id="profile">
         <div id="char_left">
@@ -20,7 +20,7 @@
 			<div id="stats_char">
 			  <div id="stats_char_left">
 			  
-				<? if (!$is_anon) { ?>
+				<? if (!$set->anon) { ?>
 					<div class="sub">
 						<?= $this->Profile->activeTitle($d->titles, $d->name); ?>
 					</div>
@@ -30,7 +30,7 @@
 					</div>
 				<? } ?>
 				
-				<? if (!$is_anon) { ?>
+				<? if (!$set->anon) { ?>
 				  	<? if (@$d->guild->name) { ?>
 				    	<div class="sub2"> 
 				    		&lt;<a href="<?= $root_url . "/g"; ?>"><?= $d->guild->name; ?></a>&gt;
@@ -46,7 +46,7 @@
 					<?= $d->level; ?> <?= $this->Profile->getGender($d->gender); ?> <?= $this->Profile->getRace($d->race); ?> <?= $this->Profile->getClass($d->class); ?>
 				</div>
 
-				<? if (!$is_anon) { ?>
+				<? if (!$set->anon) { ?>
 					<div class="sub3">
 						<?= $this->Profile->getFaction($d->race); ?> - <?= $d->realm; ?> - <?= $this->Profile->getRegion($region); ?>
 					</div>
@@ -108,10 +108,7 @@
 			<?= $this->element('profile/base', array($d)); ?>
 			<?= $this->element('profile/melee', array($d)); ?>
 			<?= $this->element('profile/ranged', array($d)); ?>
-          
-            <? // $this->print_stats_ranged(); ?>
-            <? // $this->print_stats_spell(); ?>
-            <? // $this->print_stats_networking(); ?>
+			<?= $this->element('profile/spell', array($d)); ?>
           </div>
           <div id="char_bot">
           	<?= $this->Profile->gearSlot("Mh", @$gear['mainHand'], "horiz"); ?>
@@ -131,8 +128,6 @@
           <?= $this->Profile->gearSlot("T2", @$gear['trinket2']); ?>
         </div>
         
-        <?//= //$this->calculate_gear_score_weapons(); ?>
-  
       </div>
   
       <? //include_once("foot.php"); ?>

@@ -7,6 +7,20 @@
     	var $helpers = array('Profile');
     	
 		function index ($region, $realm="*", $toon="*", $page="m") {
+					
+			$realm = $this->scrubRealm($realm);
+			$toon = $this->scrubToon($toon);
+			
+			$settings = new StdClass();
+			$settings->page = $page;
+			$settings->is_archive = false;
+			$settings->is_saved = false;
+			$settings->lite_url = 'http://armorylite.com/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon);
+			$settings->anon = false;
+			$settings->query_string = "";
+			$settings->z = strtolower($region);
+			$settings->r = strtolower($realm);
+			$settings->n = strtolower($toon);
 			
 			$this->set('root_url', 'http://armorylite.com/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon));
 			$this->set('region', $region);
@@ -18,6 +32,7 @@
 				echo "this should trigger realm browsing..";
 				exit;
 			} else {
+				
 				$character = $this->Characters->getByPath($region, $realm, $toon);
 				$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . $realm . "/" . $toon . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
 				
@@ -54,7 +69,7 @@
 						// add new row, we don't know about this character..
 						$char = array(
 							'Region' => $region,
-							'Server' => $parsed_data->realm,
+							'Server' => $realm,
 							'Toon' => $parsed_data->name,
 							'Last_Updated' => ($parsed_data->lastModified / 1000),
 							'Level' => $parsed_data->level,
@@ -90,6 +105,9 @@
 					$this->Info->save($info);
 					
 					$this->set('d', $parsed_data);
+					$debug = "new shit, not using cache<br/>";
+					$this->set('debug', $debug);
+					$this->set('set', $settings);
 					
 				} elseif ($info['http_code'] == "404") {
 					
@@ -106,9 +124,8 @@
 
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					$this->set('gear', $gear);
-					
-					$this->set('is_anon', false);
 					$this->set('debug', $debug);
+					$this->set('set', $settings);
 					
 				} else {
 					
