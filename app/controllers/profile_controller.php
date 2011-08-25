@@ -115,6 +115,7 @@
 					$this->set('debug', $debug);
 					$this->set('set', $settings);
 					$this->set('modified', $parsed_data->lastModified / 1000);
+					$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
 					
 				} elseif ($info['http_code'] == "404") {
 					
@@ -137,6 +138,7 @@
 					$this->set('debug', $debug);
 					$this->set('set', $settings);
 					$this->set('modified', $parsed_data->lastModified / 1000);
+					$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
 					
 				} else {
 					
