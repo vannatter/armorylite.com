@@ -17,7 +17,18 @@
 			if ($data['Enchants']['id']) {
 				echo json_encode($data);				
 			} else {
-				echo '{"status":"nok", "reason":"Enchant not found."}';
+				$enchant_name = $this->Curl->getEnchant($id);
+				if ($enchant_name) {
+					$enchant = $this->Enchants->addEnchant($id, $enchant_name);
+					$data = $this->Enchants->getEnchant($id);
+					if ($data['Enchants']['id']) {
+						echo json_encode($data);				
+					} else {
+						echo '{"status":"nok", "reason":"Enchant not found."}';
+					}
+				} else {
+					echo '{"status":"nok", "reason":"Enchant not found."}';
+				}
 			}
 			exit;
 		}
