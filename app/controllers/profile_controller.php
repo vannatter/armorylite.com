@@ -22,9 +22,6 @@
 			$settings->r = $realm;
 			$settings->n = $toon;
 			
-			$this->set('root_url', '/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($toon));
-			$this->set('region', $region);
-			
 			if ($realm == "*") {
 				echo "this should trigger region browsing..";
 				exit;
@@ -96,63 +93,46 @@
 					}
 					
 					// add info record..
+					
+					$gz_data = gzcompress($data, 9);
+					
 					$info = array(
 						'character_id' => $char_id,
 						'last_modified' => ($parsed_data->lastModified / 1000),
-						'data' => $data
+						'data' => $gz_data
 					);
 					$this->Info->create();
 					$this->Info->save($info);
 					
-					$this->set('d', $parsed_data);
-					$debug = "new shit, not using cache<br/>";
-					
 					$counter = $this->Counters->setCounter($char_id);
-					$this->set('counter', $counter);
-					
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
-					$this->set('gear', $gear);
-					$this->set('debug', $debug);
-					$this->set('set', $settings);
-					$this->set('modified', $parsed_data->lastModified / 1000);
-					$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
-					
-				} elseif ($info['http_code'] == "404") {
-					
-					$this->cakeError('error404');
 					
 				} elseif ($info['http_code'] == "304") {
 					
 					// content has not changed..
 					$data = $this->Info->getLatest($character['Characters']['Character_ID']);
-					$parsed_data = json_decode($data['Info']['data']);
+					$gz_data = gzuncompress($data['Info']['data']);
+					$parsed_data = json_decode($gz_data);
 									
-					$this->set('d', $parsed_data);
-					$debug = "not modified, using cache<br/>";
-					
 					$counter = $this->Counters->setCounter($character['Characters']['Character_ID']);
-					$this->set('counter', $counter);
-
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
-					$this->set('gear', $gear);
-					$this->set('debug', $debug);
-					$this->set('set', $settings);
-					$this->set('modified', $parsed_data->lastModified / 1000);
-					$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
 					
+				} elseif ($info['http_code'] == "404") {
+					$this->cakeError('error404');
 				} else {
-					
-					// something else happened..
 					$this->cakeError('error500');					
-					
 				}
 				
-			}
-			
+				// set output variables..
+				$this->set('d', $parsed_data);
+				$this->set('counter', $counter);
+				$this->set('gear', $gear);
+				$this->set('set', $settings);
+				$this->set('modified', $parsed_data->lastModified / 1000);
+				$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
 				
+			}
 		}
-		
-
 	}
 	
 ?>

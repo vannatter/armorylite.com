@@ -33,7 +33,7 @@
 				<? if (!$set->anon) { ?>
 				  	<? if (@$d->guild->name) { ?>
 				    	<div class="sub2"> 
-				    		&lt;<a href="<?= $root_url . "/g"; ?>"><?= $d->guild->name; ?></a>&gt;
+				    		&lt;<a href="<?= $set->lite_url . "/g"; ?>"><?= $d->guild->name; ?></a>&gt;
 				    	</div>
 					<? } ?>
 				<? } else { ?>
@@ -48,7 +48,7 @@
 
 				<? if (!$set->anon) { ?>
 					<div class="sub3">
-						<?= $this->Profile->getFaction($d->race); ?> - <?= $d->realm; ?> - <?= $this->Profile->getRegion($region); ?>
+						<?= $this->Profile->getFaction($d->race); ?> - <?= $d->realm; ?> - <?= $this->Profile->getRegion($set->z); ?>
 					</div>
 				<? } ?>
 				
