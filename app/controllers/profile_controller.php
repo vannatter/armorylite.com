@@ -2,7 +2,7 @@
 
 	class ProfileController extends AppController {
 		var $name = 'Profile';
-		var $uses = array('Characters', 'Info');
+		var $uses = array('Characters', 'Info', 'Counters');
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
@@ -107,10 +107,14 @@
 					$this->set('d', $parsed_data);
 					$debug = "new shit, not using cache<br/>";
 					
+					$counter = $this->Counters->setCounter($char_id);
+					$this->set('counter', $counter);
+					
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					$this->set('gear', $gear);
 					$this->set('debug', $debug);
 					$this->set('set', $settings);
+					$this->set('modified', $parsed_data->lastModified / 1000);
 					
 				} elseif ($info['http_code'] == "404") {
 					
@@ -124,11 +128,15 @@
 									
 					$this->set('d', $parsed_data);
 					$debug = "not modified, using cache<br/>";
+					
+					$counter = $this->Counters->setCounter($character['Characters']['Character_ID']);
+					$this->set('counter', $counter);
 
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					$this->set('gear', $gear);
 					$this->set('debug', $debug);
 					$this->set('set', $settings);
+					$this->set('modified', $parsed_data->lastModified / 1000);
 					
 				} else {
 					
