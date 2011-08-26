@@ -32,9 +32,8 @@
 				
 				$character = $this->Characters->getByPath($region, $realm, $toon);
 				$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
-				
 				list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
-				
+								
 				if ($info['http_code'] == 200) {
 					$parsed_data = json_decode($data);
 					
@@ -118,9 +117,14 @@
 					$gear = $this->Profile->buildGearSet($parsed_data->items);
 					
 				} elseif ($info['http_code'] == "404") {
-					$this->cakeError('error404');
+					$re = json_decode($data);
+					$this->cakeError('e404', array('reason' => $re->reason));
+				} elseif ($info['http_code'] == "503") {
+					$re = json_decode($data);
+					$this->cakeError('e503', array('reason' => $re->reason));
 				} else {
-					$this->cakeError('error500');					
+					$re = json_decode($data);
+					$this->cakeError('e500', array('reason' => $re->reason));
 				}
 				
 				// set output variables..
