@@ -91,20 +91,21 @@
 						$char_id = $this->Characters->id;
 					}
 					
-					// add info record..
-					
-					$gz_data = gzcompress($data, 9);
-					
-					$info = array(
-						'character_id' => $char_id,
-						'last_modified' => ($parsed_data->lastModified / 1000),
-						'data' => $gz_data
-					);
-					$this->Info->create();
-					$this->Info->save($info);
-					
-					$counter = $this->Counters->setCounter($char_id);
-					$gear = $this->Profile->buildGearSet($parsed_data->items);
+					if ($char_id > 0) {
+						$gz_data = gzcompress($data, 9);
+						$info = array(
+							'character_id' => $char_id,
+							'last_modified' => ($parsed_data->lastModified / 1000),
+							'data' => $gz_data
+						);
+						$this->Info->create();
+						$this->Info->save($info);
+						
+						$counter = $this->Counters->setCounter($char_id);
+						$gear = $this->Profile->buildGearSet($parsed_data->items);
+					} else {
+						$this->cakeError('e404', array('reason' => "Character not found"));
+					}
 					
 				} elseif ($info['http_code'] == "304") {
 					
