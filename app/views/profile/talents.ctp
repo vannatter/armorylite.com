@@ -88,7 +88,7 @@
 											<div style="display:none;" class="tal_mnu" id="mnu_s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>_c<?=$c;?>">
 												<div class="tmnu_name"><?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][0]['Talents']['name']; ?></div>											
 												<div class="tmnu_rank">Rank <?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']; ?>/<?= count(@$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks']); ?></div>
-												<div class="tmnu_desc"><?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][(($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']==0)?0:($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']-1))]['Talents']['tooltip']; ?></div>	
+												<div class="tmnu_desc"><?= str_replace("\n\n", "<br />", @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][(($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']==0)?0:($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']-1))]['Talents']['tooltip']); ?></div>	
 											</div>	                					
 										</div>
 	                				<? } else { ?>
