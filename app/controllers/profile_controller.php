@@ -2,7 +2,7 @@
 
 	class ProfileController extends AppController {
 		var $name = 'Profile';
-		var $uses = array('Characters', 'Info', 'Counters');
+		var $uses = array('Characters', 'Info', 'Counters', 'Talents');
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
@@ -134,7 +134,19 @@
 				$this->set('gear', $gear);
 				$this->set('set', $settings);
 				$this->set('modified', $parsed_data->lastModified / 1000);
-				$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
+				
+				switch($page) {
+					case "t":
+						$talent_grid = $this->Profile->buildTalentTrees($parsed_data);
+						$this->set('grid', $talent_grid);
+						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Talents');
+						$this->render('talents');
+						break;
+					default:
+						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
+						$this->render('index');					
+						break;					
+				}
 				
 			}
 		}

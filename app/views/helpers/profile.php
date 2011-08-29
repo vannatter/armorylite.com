@@ -246,6 +246,43 @@
 			return $s;		
 		}		
 
+		function getTalentClass($class) {
+			$s = "";
+			switch ($class) {
+				case 1:
+					$s = "warrior";
+					break;
+				case 2:
+					$s = "paladin";
+					break;
+				case 3:
+					$s = "hunter";
+					break;
+				case 4:
+					$s = "rogue";
+					break;
+				case 5:
+					$s = "priest";
+					break;
+				case 6:
+					$s = "deathknight";
+					break;
+				case 7:
+					$s = "shaman";
+					break;
+				case 8:
+					$s = "mage";
+					break;
+				case 9:
+					$s = "warlock";
+					break;
+				case 11:
+					$s = "druid";
+					break;
+			}
+			return $s;			
+		}		
+		
 		function getClass($class) {
 			$s = "";
 			switch ($class) {

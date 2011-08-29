@@ -6,7 +6,71 @@
 		
 	    function initialize(&$controller) {
 	    	$this->Controller = $controller;
-	    	$this->test = "blah";
+	    }
+	    
+	    function buildTalentTrees($data) {
+			if (!$this->__initTalentsModel()) { }
+			if (!$this->__initTalentTreesModel()) { }
+			
+			$grid = array();
+			$max_cols = 4;
+			$max_rows = 7;
+			$talent_data = $this->Talents->getTalentsByClass($data->class);
+			
+			if (is_array($data->talents)) {
+				$spec = 1;
+
+				foreach($data->talents as $talent_block) {
+					if (@$talent_block->name) {
+						$grid['spec_'.$spec]['info']['build'] = $talent_block->build;
+						$grid['spec_'.$spec]['info']['spec_id'] = $spec;
+						$grid['spec_'.$spec]['info']['name'] = $talent_block->name;
+						$grid['spec_'.$spec]['info']['active'] = ((@$talent_block->selected == "1") ? "1" : "0");
+						$grid['spec_'.$spec]['glyphs'] = $talent_block->glyphs;
+						
+						$talent_string = $talent_block->build;
+						$trees = $this->TalentTrees->getTalentTreesByClass($data->class);
+						$pane = 1;
+						$slot = 0;
+						
+						foreach ($trees as $tree) {
+							$grid['spec_'.$spec]['pane_'.$pane]['info']['name'] = $tree['TalentTrees']['tree'];
+							$grid['spec_'.$spec]['pane_'.$pane]['info']['background'] = '/img/talents/' . $tree['TalentTrees']['background'] . '.png';
+							$grid['spec_'.$spec]['pane_'.$pane]['info']['count'] = $talent_block->trees[$pane-1]->total;
+	
+							$tree_talents = $this->Talents->getTalentsByClassTree($data->class, $tree['TalentTrees']['tree_num']);
+							
+							$row = 1;
+							$col = 1;
+							$spent = 0;
+							$ranks = array();
+							
+							foreach ($tree_talents as $tree_talent) {
+								$tree_talent['Talents']['web_icon'] = $this->Curl->getIcon($tree_talent['Talents']['texture']);
+								if ( ($row == $tree_talent['Talents']['row']) && ($col == $tree_talent['Talents']['column']) ) {
+									$ranks[] = $tree_talent;
+								} else {
+									$grid['spec_'.$spec]['pane_'.$pane]['row_'.$row]['col_'.$col]['spent'] = substr($talent_string,$slot,1);
+									$grid['spec_'.$spec]['pane_'.$pane]['row_'.$row]['col_'.$col]['ranks'] = $ranks;
+									$ranks = array();
+									$ranks[] = $tree_talent;
+									$slot++;
+								}
+								$row = $tree_talent['Talents']['row'];
+								$col = $tree_talent['Talents']['column'];
+							}
+							
+							$grid['spec_'.$spec]['pane_'.$pane]['row_'.$row]['col_'.$col]['spent'] = substr($talent_string,$slot,1);
+							$grid['spec_'.$spec]['pane_'.$pane]['row_'.$row]['col_'.$col]['ranks'] = $ranks;
+							$pane++;
+							$slot++;
+						}
+						$spec++;
+					}					
+				}
+			}
+			
+			return $grid;
 	    }
     
 		function buildGearSet($data) {
@@ -203,7 +267,25 @@
         		return true;
       		}
       		return false;
-    	} 		
+    	} 	
+
+		function __initTalentsModel(){
+      		$this->Talents = ClassRegistry::init('Talents');
+      		if (isset($this->Talents)) {
+        		$this->Talents->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	} 
+
+		function __initTalentTreesModel(){
+      		$this->TalentTrees = ClassRegistry::init('TalentTrees');
+      		if (isset($this->TalentTrees)) {
+        		$this->TalentTrees->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	}     	
 		
 	}
 ?>

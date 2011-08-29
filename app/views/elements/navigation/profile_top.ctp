@@ -44,28 +44,28 @@
 
       <div class="box_space">&nbsp;</div>
  
-      <div id="main_nav" class="<?=((($set->page=="main")||(!$set->page)) ? "box_on" : "box_off")?>">
+      <div id="main_nav" class="<?=((($set->page=="m")||(!$set->page)) ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/");?>">Main</a>
       </div>
-      <div id="talents_nav" class="<?=(($set->page=="talents") ? "box_on" : "box_off")?>">
+      <div id="talents_nav" class="<?=(($set->page=="t") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/t");?>">Talents</a>
       </div>
-      <div id="rep_nav" class="<?=(($set->page=="reputation") ? "box_on" : "box_off")?>">
+      <div id="rep_nav" class="<?=(($set->page=="r") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/r");?>">Rep</a>
       </div>
       <? if (!$set->anon) { ?>
-      <div id="guild_nav" class="<?=(($set->page=="guild") ? "box_on" : "box_off")?>">
+      <div id="guild_nav" class="<?=(($set->page=="g") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/g" . $set->query_string);?>">Guild</a>
       </div>
       <? } ?>
-      <div id="arena_nav" class="<?=(($set->page=="arena") ? "box_on" : "box_off")?>">
+      <div id="arena_nav" class="<?=(($set->page=="a") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/a" . $set->query_string);?>">Arena</a>
       </div>
-      <div id="achieve_nav" class="<?=(($set->page=="achieve") ? "box_on" : "box_off")?>">
+      <div id="achieve_nav" class="<?=(($set->page=="h") ? "box_on" : "box_off")?>">
         <a href="#">Achieve</a>
       </div>
       <? if (!$set->anon) { ?>
-      <div id="notes_nav" class="<?=(($set->page=="notes") ? "box_on" : "box_off")?>">
+      <div id="notes_nav" class="<?=(($set->page=="n") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/n" . $set->query_string);?>">Notes</a>
       </div>
       <? } ?>

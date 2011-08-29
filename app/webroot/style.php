@@ -1218,6 +1218,45 @@ I {
 }
 
 
+.tal_mnu {
+	overflow: hidden;
+	margin: -30px 0px 0px 6px !important;
+
+  position: absolute;
+  border: 1px dotted <?=$color_53;?>;
+  line-height: 18px;
+  z-index: 100;
+  background-color: <?=$color_54;?>;
+  width: 280px;
+  text-align: left;
+  padding: 5px;
+}
+
+.tal_mnu A {
+  padding: 1px;
+  text-decoration: none;
+}
+
+.tmnu_name {
+	font-size: 13px;
+	font-weight: bold;
+	clear: both;
+	color: #fff;
+}
+.tmnu_rank {
+	font-size: 11px;
+	font-weight: normal;
+	clear: both;
+	color: #666;
+}
+.tmnu_desc {
+	font-size: 12px;
+	font-weight: normal;
+	clear: both;
+	margin-top: 5px;
+}
+
+
 /*****************************************************************************************/
 .stats_head_on {
   margin: 6px 6px 0px 6px;
@@ -2659,17 +2698,18 @@ I {
   }
   #talents .content .pane {
     float: left;
-  	border: 1px dotted <?=$color_61;?>; 
+  	border: 1px dotted #444; 
   	margin: 0px 0px 0px 3px;
-  	padding: 3px;
+  	padding: 10px;
   	background-color: <?=$color_62;?>;
   	margin-top: -5px;
+  	height: 340px;
   } 
   #talents .content .row {
     clear: both;
   } 
   #talents .content .col_on, #talents .content .col, #talents .content .col_img {
-    margin: 1px;
+    margin: 3px;
     float: left;
     width: 35px;
     height: 35px;
@@ -2685,13 +2725,50 @@ I {
     opacity:.0;
   } 
   #talents .content .block {
-    margin: 1px;
+    float: left;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+	    
+  /**
+    margin: 3px;
     float: left;
     width: 35px;
     height: 35px;
   	line-height: 35px;
   	font-size: 11px;
+  	color: red;
+  	background-color: #000;
+  	display: block;
+  	**/
   }
+  
+  .talico {
+  	display: block;
+  	height: 33px;
+  	overflow: hidden;
+  }
+  
+  .talcnt {
+  	position: relative;
+  	background-color: #000;
+  	width: 12px;
+  	font-size: 10px;
+  	left: 23px;
+  	top: 22px;
+  }
+  
+  .full_clr {
+  	color: #FCD600;
+  }
+  .empty_clr {
+  	color: <?=$color_65;?>;
+  }
+  .half_clr {
+  	color: <?=$color_69;?>;
+  }
+    
   #talents .content .empty {
   	border: 1px solid <?=$color_65;?>;
   	background-color: <?=$color_66;?>;
@@ -2711,21 +2788,18 @@ I {
   	border: 1px solid <?=$color_65;?>;
   	background-color: <?=$color_66;?>;
   	font-weight: normal;
-  	background-image: url(<?=$mesh_01;?>);
   	background-repeat: repeat;
   }
   #talents .content .full_img {
-    border: 1px solid <?=$color_67;?>;
+    border: 1px solid #FCD600;
   	background-color: <?=$color_68;?>;
   	font-weight: bold;
-  	background-image: url(<?=$mesh_01;?>);
   	background-repeat: repeat;
   }
   #talents .content .half_img {
   	border: 1px solid <?=$color_69;?>;
   	background-color: <?=$color_70;?>;
   	font-weight: bold;
-  	background-image: url(<?=$mesh_01;?>);
   	background-repeat: repeat;
   }
   #talents .content .empty A, #talents .content .empty_img A {
@@ -2778,6 +2852,12 @@ I {
     clear: both;
     height: 40px; 
   }
+  
+  .noton {
+	  opacity: 0.4;
+	  -moz-opacity:0.40;
+	  filter: alpha(opacity=40);  
+  }
 
   
   #talents .tabinactive {
@@ -2811,6 +2891,47 @@ I {
     text-decoration: none;
     color: <?=$color_75;?>;  
   }
+
+
+.export_calc {
+	clear: both;
+	font-size: 10px;
+	text-align: left;
+	margin-left: 10px;
+}
+.export_calc a {
+	color: #666;
+	text-decoration: none;
+}
+.export_calc a:hover {
+	color: #9F9;
+}
+
+.glyph_grid {
+	margin-bottom: 20px;
+	overflow: hidden;
+	clear: both;
+	padding-top: 10px;
+}
+
+.glyphs_box {
+	font-size: 10px;
+	float: left;
+	text-align: left;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+.glyphs_box h3 {
+	border-bottom: 1px solid #444;
+	padding-bottom: 5px;
+}
+.glyphs_box a {
+	text-decoration: none;
+	color: #666;
+}
+.glyphs_box a:hover {
+	color: #9F9;
+}
 
   .glyphs {
     font-size: 10px;
@@ -2856,7 +2977,7 @@ I {
 	background-image: url(<?=$mesh_01;?>);
 	background-repeat: repeat;
   padding: 5px;
-	border: 1px solid <?=$color_03;?>;
+	border: 1px solid #333;
 	margin: 0px;
 }
 
@@ -2913,3 +3034,13 @@ I {
 	border: 1px solid red;
 	font-size: 11px;
 }
+
+.talblock {
+	cursor: pointer;
+}
+
+.swaptal {
+	cursor: pointer;
+}
+
+

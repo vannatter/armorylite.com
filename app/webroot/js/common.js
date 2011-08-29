@@ -33,6 +33,35 @@ $(document).ready(function() {
 	}	
 	
 	
+	$('.talblock').hoverIntent({
+		sensitivity: 3,
+		interval: 200,
+		over: show_tal_menu, 
+		timeout: 100,
+		out: hide_tal_menu	
+	});
+	function show_tal_menu() {
+		var s = $(this).attr("id");
+		$('#mnu_'+s).show();
+	}
+	function hide_tal_menu() {
+		var s = $(this).attr("id");
+		$('#mnu_'+s).hide();
+	}	
+	
+	
+	$('.swaptal').click(function() {
+		var i = $(this).attr('data-gridid');
+
+		if ($('#grid_'+i+':visible').length > 0) {
+		} else {
+			$('.swaptal').removeClass('tabactive').addClass('tabinactive');
+			$(this).addClass('tabactive').removeClass('tabinactive');
+			$('.spec').hide();
+			$('#grid_'+i).fadeIn();		
+		}
+	});
+	
 	$('.stats_toggle').click(function() {
 		var i = $(this).attr('data-statname');
 		
