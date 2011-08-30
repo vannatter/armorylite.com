@@ -139,6 +139,7 @@
 					case "r":
 						$reputation_grid = $this->Profile->buildReputationTree($parsed_data);
 						$this->set('grid', $reputation_grid);
+						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Reputation');
 						$this->render('reputation');
 						break;
 					case "t":
