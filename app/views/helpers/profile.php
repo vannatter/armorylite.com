@@ -53,6 +53,21 @@
 			
 		}
 		
+		function getReputationLabel($id) {
+			$labels = array("Hated", "Hostile", "Unfriendly", "Neutral", "Friendly", "Honored", "Revered", "Exalted");
+			return $labels[$id];
+		}
+		
+	    function getReputation($name, $value, $max, $level) {
+	    	
+			$pct = abs($value) / abs($max);
+			$pct = floor($pct * 100);
+			$fc = $this->getReputationLabel($level);
+
+			$xx = "<div class=\"rep_line\"><div class=\"rep_name\">" . $name . "</div><div class=\"rep_box\"><span class=\"rep_bar " . $fc . "\" style=\"width:" . $pct . "%;\">&nbsp;</span></div><div class=\"rep_lvl\">" . $fc . "</div><div class=\"rep_lvl\">" . $value . "/" . $max . "</div></div>";
+      		return $xx;
+    	}		
+		
 		function getPower($power_type, $power_value) {
 			$s = "";
 			switch ($power_type) {

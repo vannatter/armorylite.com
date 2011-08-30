@@ -8,6 +8,23 @@
 	    	$this->Controller = $controller;
 	    }
 	    
+	    function buildReputationTree($data) {
+	    	$grid = array();
+	    	foreach ($data->reputation as $rep) {
+	    		$grid[$rep->standing][] = $rep;
+	    	}
+	    	krsort($grid);
+
+    		$final_grid = array();
+    		for ($i=count($grid); $i >= 0; $i--) {	
+    			foreach ($grid[$i] as $gr) {
+		    		$final_grid[$i][$gr->value.".".$gr->id] = $gr;
+    			}
+	    		krsort($final_grid[$i]);
+    		}
+    		return $final_grid;
+	    }
+	    
 	    function buildTalentTrees($data) {
 			if (!$this->__initTalentsModel()) { }
 			if (!$this->__initTalentTreesModel()) { }

@@ -49,6 +49,14 @@ $(document).ready(function() {
 		$('#mnu_'+s).hide();
 	}	
 	
+	$('.rep_header').click(function() {
+		var i = $(this).attr('data-id');
+		if ($('#repbox_'+i+':visible').length > 0) {
+			$('#repbox_'+i).hide();
+		} else {
+			$('#repbox_'+i).fadeIn();
+		}
+	});
 	
 	$('.swaptal').click(function() {
 		var i = $(this).attr('data-gridid');

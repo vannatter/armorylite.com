@@ -136,6 +136,11 @@
 				$this->set('modified', $parsed_data->lastModified / 1000);
 				
 				switch($page) {
+					case "r":
+						$reputation_grid = $this->Profile->buildReputationTree($parsed_data);
+						$this->set('grid', $reputation_grid);
+						$this->render('reputation');
+						break;
 					case "t":
 						$talent_grid = $this->Profile->buildTalentTrees($parsed_data);
 						$this->set('grid', $talent_grid);
