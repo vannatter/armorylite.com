@@ -57,7 +57,5 @@
 
     <div class="page_ad">
       <?= $this->Common->show_ad("homepage","tall"); ?>
-      <br /><br />
-      <?= $this->Common->show_ad("homepage","tallhouse"); ?>                 
     </div>
   
