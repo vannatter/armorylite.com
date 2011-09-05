@@ -58,6 +58,16 @@
 			exit;
 		}
 		
+		function getAchievement($achievement_id) {
+			$achievement_data = $this->Curl->getAchievement($achievement_id);
+			
+			echo "<pre>";
+			print_r($achievement_data);
+			echo "</pre>";			
+			exit;
+		}
+		
+		
 	}
 	
 ?>

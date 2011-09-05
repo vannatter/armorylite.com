@@ -3043,4 +3043,50 @@ I {
 	cursor: pointer;
 }
 
+.achievement_box {
+    clear: both;
+    color: <?=$color_78;?>;
+    background-color: <?=$color_79;?>;
+    padding: 4px;
+    margin: 3px;
+    text-align: left;
+  	border: 1px dotted <?=$color_80;?>;
+  	overflow: hidden;
+}
+.achievement_box .icon {
+	float: left;
+}
+.achievement_box .info {
+	float: left;
+	margin-left: 10px;
+	width: 440px;
+}
+.achievement_box .info .title {
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+}
+.achievement_box .info .desc {
+	font-size: 11px;
+}
+.achievement_box .info .reward {
+	font-size: 11px;
+	color: #EAC75F;
+}
 
+.achievement_box .pts {
+	float: right;
+	width: 40px;
+	text-align: center;	
+	padding: 4px;
+	background-color: #1a1a1a;
+}
+.achievement_box .pts .pt-this {
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
+}
+.achievement_box .pts .pt-math {
+	font-size: 11px;
+	font-weight: normal;
+}

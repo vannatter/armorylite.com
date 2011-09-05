@@ -8,6 +8,32 @@
 	    	$this->Controller = $controller;
 	    }
 	    
+	    function buildAchievementTree($data) {
+	    	if (!$this->__initAchievementsModel()) { }
+	    	
+	    	$achievements = array();
+	    	foreach ($data->achievements->achievementsCompleted as $k=>$v) {
+	    		$timestamp = $data->achievements->achievementsCompletedTimestamp[$k] / 1000;
+	    		$achievement = $this->Achievements->getAchievement($v);
+		    	if ($achievement['Achievements']['id']) {
+					$achievement['Achievements']['web_icon'] = $this->Curl->getIcon($achievement['Achievements']['icon']);
+		    	} else {
+		    		$achievement_curl = $this->Curl->getAchievement($v);
+		    		if ($achievement_curl['title']) {
+		    			$achievement = $this->Achievements->addAchievement($v, $achievement_curl['title'], $achievement_curl['icon'], $achievement_curl['points'], $achievement_curl['text'], $achievement_curl['reward']);
+				    	if ($achievement['Achievements']['id']) {
+							$achievement['Achievements']['web_icon'] = $this->Curl->getIcon($achievement['Achievements']['icon']);
+				    	}
+		    		}
+		    	}
+		    	if ($achievement['Achievements']['id']) {
+		    		$achievements[$timestamp.".".$k] = $achievement;
+		    	}
+	    	}
+			krsort($achievements);
+	    	return $achievements;
+	    }
+	    
 	    function buildReputationTree($data) {
 	    	$grid = array();
 	    	foreach ($data->reputation as $rep) {
@@ -302,7 +328,16 @@
         		return true;
       		}
       		return false;
-    	}     	
+    	}   
+
+		function __initAchievementsModel(){
+      		$this->Achievements = ClassRegistry::init('Achievements');
+      		if (isset($this->Achievements)) {
+        		$this->Achievements->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	}       	
 		
 	}
 ?>

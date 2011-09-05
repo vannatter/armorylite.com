@@ -61,8 +61,8 @@
       <div id="arena_nav" class="<?=(($set->page=="a") ? "box_on" : "box_off")?>">
         <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/a" . $set->query_string);?>">Arena</a>
       </div>
-      <div id="achieve_nav" class="<?=(($set->page=="h") ? "box_on" : "box_off")?>">
-        <a href="#">Achieve</a>
+      <div id="achieve_nav" class="<?=(($set->page=="v") ? "box_on" : "box_off")?>">
+        <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/v" . $set->query_string);?>">Achieve</a>
       </div>
       <? if (!$set->anon) { ?>
       <div id="notes_nav" class="<?=(($set->page=="n") ? "box_on" : "box_off")?>">

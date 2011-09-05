@@ -142,6 +142,12 @@
 						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Reputation');
 						$this->render('reputation');
 						break;
+					case "v":
+						$achievement_grid = $this->Profile->buildAchievementTree($parsed_data);
+						$this->set('grid', $achievement_grid);
+						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Achievements');
+						$this->render('achievements');
+						break;
 					case "t":
 						$talent_grid = $this->Profile->buildTalentTrees($parsed_data);
 						$this->set('grid', $talent_grid);
