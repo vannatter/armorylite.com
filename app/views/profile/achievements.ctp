@@ -56,6 +56,9 @@
 	        					<?= $v['Achievements']['reward']; ?>
 	        				</div>
         				<? } ?>
+        				<div class="completed_date">
+        					<?= $v['Achievements']['completed']; ?>
+        				</div>        				
         			</div>
         			
         			<div class="pts">

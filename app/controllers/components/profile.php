@@ -27,6 +27,7 @@
 		    		}
 		    	}
 		    	if ($achievement['Achievements']['id']) {
+		    		$achievement['Achievements']['completed'] = date("F j, Y h:i", $timestamp);
 		    		$achievements[$timestamp.".".$k] = $achievement;
 		    	}
 	    	}

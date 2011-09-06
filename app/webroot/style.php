@@ -3073,6 +3073,13 @@ I {
 	font-size: 11px;
 	color: #EAC75F;
 }
+.achievement_box .info .completed_date {
+	font-size: 11px;
+	clear: both;
+	color: #444;
+}
+
+
 
 .achievement_box .pts {
 	float: right;
