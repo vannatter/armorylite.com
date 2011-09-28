@@ -6,7 +6,7 @@
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
-		function index ($region, $realm="*", $toon="*", $page="m") {
+		function index($region, $realm="*", $toon="*", $page="m", $archive_id="") {
 					
 			$realm = $this->scrubRealm($realm);
 			$toon = $this->scrubToon($toon);

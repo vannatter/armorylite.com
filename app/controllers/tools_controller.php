@@ -2,7 +2,7 @@
 
 	class ToolsController extends AppController {
 		var $name = 'Tools';
-		var $uses = array('Home');
+		var $uses = array('Home', 'Servers');
 		var $helpers = array('Common');
 		var $components = array('Curl');
 		
@@ -64,6 +64,38 @@
 			echo "<pre>";
 			print_r($achievement_data);
 			echo "</pre>";			
+			exit;
+		}
+		
+		function getServers($region="us") {
+			$url = $this->Curl->getBNETprefix($region) . "/api/wow/realm/status";
+			
+			if ($region == "cn") {
+				$url = "http://www.battlenet.com.cn/api/wow/realm/status?rhtml=y";
+			}
+			
+			list ($d, $i) = $this->Curl->getBNET($url);
+			$a = json_decode($d);
+			return $a;
+		}		
+		
+		
+		function updateServers() {
+
+			$regions = array("cn", "kr", "tw", "us", "eu");
+			
+			foreach ($regions as $region) {
+				$servers = $this->getServers($region);
+				foreach ($servers->realms as $server) {
+					$check_server = $this->Servers->getServer($server->slug, $region);
+					if ($check_server['Servers']['id']) {
+						$server_update = $this->Servers->updateServer($check_server['Servers']['id'], $server->name, $server->slug, $region, $server->type, $server->status, $server->population, $server->battlegroup);
+					} else {
+						$server_add = $this->Servers->addServer($server->name, $server->slug, $region, $server->type, $server->status, $server->population, $server->battlegroup);
+					}
+				}
+			}
+			
 			exit;
 		}
 		
