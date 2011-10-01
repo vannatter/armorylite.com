@@ -88,9 +88,8 @@
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/score/eu/">Browse EU Gear Scores</a></div></div>
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/stats/us/">Browse US Statistics</a></div></div>
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/stats/eu/">Browse EU Statistics</a></div></div>
+            <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="http://twitter.com/armorylite">@armorylite on Twitter</a></div></div>
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/poweredby.php">Powered By! Functionality</a></div></div>
-            <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/mirror/">Help Mirror For Us</a></div></div>
-            <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a target="_new" href="http://digg.com/pc_games/armorylite_com_Lite_alternative_to_the_WoW_armory">Help Digg Us</a></div></div>
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="javascript:addP();">Browser Search Plug-In</a></div></div>
             <div class="navelem"><div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="javascript:addP();">Browser DirectLink Plug-In</a></div></div>
  
