@@ -78,8 +78,7 @@
       }
       
       $phpAds_raw = array();
-      define('MAX_PATH', '/home/openx');
-      if (@include_once(MAX_PATH . '/www/delivery/alocal.php')) {
+      if (@include_once('/home/openx' . '/www/delivery/alocal.php')) {
         if (!isset($phpAds_context)) {
           $phpAds_context = array();
         } 

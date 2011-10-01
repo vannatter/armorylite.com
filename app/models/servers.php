@@ -5,6 +5,11 @@
     	var $useDbConfig = 'default';
     	var $primaryKey = 'id';
     
+	    function getServers($region) {
+			$i = $this->find('all', array('conditions' => array('Servers.region' => $region)));
+    		return $i;
+    	}    	
+    	
     	function getServer($url_name, $region) {
 			$i = $this->find('first', array('conditions' => array('Servers.url_name' => $url_name, 'Servers.region' => $region)));
     		return $i;

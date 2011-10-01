@@ -39,13 +39,16 @@
           <div class="box_browse">
             View your profile - select your server and type in your character name!
             <p />
-            <form name="_arm" onSubmit="location.href='/'+document._arm._country.value+'/'+document._arm._servername.value+'/'+document._arm._name.value; return false;">
-              <input type="hidden" name="_servername" value="">
-              <input type="hidden" name="_country" value="">
-              <select class="w12" name="_server" onChange="do_arm_build('server')">
-                <option value="">--</option>
-                <?=$x;?>         
-              </select>
+            
+			<select name="regions" id="regions_sel">
+				<option value="">Choose..</option>
+				<option value="us">United States</option>
+				<option value="eu">Europe</option>
+				<option value="kr">Korea</option>
+				<option value="tw">Taiwan</option>
+				<option value="cn">China</option>
+			</select>            
+            
               <input class="w9" type="text" id="login" name="_name" maxlength="20" size="10" value="Your Name" onFocus="ghost_txt_inc(this, 'Your Name', 'login_on')" onKeyUp="do_arm_build('user')" onKeyDown="do_arm_build('user')" onBlur="ghost_txt_out(this, 'Your Name', 'login')"></span>
 
               <p />

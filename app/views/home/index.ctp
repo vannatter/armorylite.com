@@ -1,9 +1,59 @@
+<? $this->Javascript->link("page/home.js", null, array("inline"=>false)); ?>
 
-<br/><br/>
-Hey, we're still recovering from the APIcalypse, but in the meantime, you can start to browse some basic data.
-<br/><br/>
-I'm working as hard as I can to get things fully back online (plus some fun new things).
-<br/><br/>
-The format is the same: http://armorylite.com/region/realm/character 
-<br/><br/>
-<a href="/us/kargath/frighten">Here's mine: http://armorylite.com/us/kargath/frighten</a>
+<table border="0" width="100%">
+  <tr valign="top">
+    <td>
+
+      <div class="corp_box2">
+        <div class="corp_box_buffer">
+          <div class="box_browse">
+            View your profile - select your region, server and type in your character name!
+            <p />
+            <form name="_arm" onSubmit="return false;">
+ 
+ 			<select name="region_list" id="regions_sel"  class="builder_sel">
+				<option value="">Choose..</option>
+				<option value="us">United States</option>
+				<option value="eu">Europe</option>
+				<option value="kr">Korea</option>
+				<option value="tw">Taiwan</option>
+				<option value="cn">China</option>
+			</select>  
+			<select name="server_list" id="server_sel" class="builder_sel">
+				<option value="">--</option>
+			</select>
+			
+			<input class="builder_name defaultText" type="text" id="name_box" maxlength="40" title="Your Name" />
+
+              <p />
+              Your Armory Lite URL: 
+              <br />
+              <span id="arm_link">http://armorylite.com/??/??/??</span>
+            </form>  
+          </div>
+        </div>
+      </div>
+
+      <div class="im imghead"><img src="/img/sitenews.gif" alt="Site News" width="200" height="25"></div>
+      <div class="hr"></div>
+
+
+		<? foreach ($blog as $b) { ?>
+        	<div class="blog2">
+          		<?=	stripslashes($b['Blog']['Blog_Body']);?> 
+          		<br />
+          		<span class="blog_footer"><?=$b['Users']['Name'];?> @ <?=date("m/d/Y H:i:s",$b['Blog']['Blog_Date']);?></span>
+        	</div>
+        	<div class="hrd"></div>
+		<? } ?>
+		
+    </td>
+    
+    <td align="right" width="240">
+      <?= $this->element('corp/side'); ?>
+    </td>
+
+    <td width="5">&nbsp;</td>
+	
+  </tr> 
+</table>

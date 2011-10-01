@@ -224,6 +224,7 @@ A {
 .im {
   margin-top: 10px;
   clear: both;
+  text-align: left;
 }
 
 .imghead {
@@ -294,7 +295,7 @@ A {
 
 .corp_header_right_top {
   height: 34px;
-  background-image: url(/images/head_bg.gif);
+  background-image: url(/img/head_bg.gif);
   background-repeat: repeat-x;
   text-align: right;
   font-size: 11px;
@@ -1801,7 +1802,7 @@ I {
   	text-decoration: underline;
   }
   
-  SELECT {
+  .builder_sel {
   	background-color: <?=$color_89;?>;
   	border: 1px solid <?=$color_90;?>;
   	width: 200px;
@@ -1810,6 +1811,16 @@ I {
   	font-size: 12px;
   }
 
+  .builder_name {
+  	background-color: <?=$color_89;?>;
+  	border: 1px solid <?=$color_90;?>;
+  	font-family: verdana, helvetica, serif;
+  	color: <?=$color_91;?>;
+  	font-size: 12.5px;
+  	text-align: center;
+  	width: 400px;
+  }  
+
   #login_nocenter {
   	background-color: <?=$color_89;?>;
   	border: 1px solid <?=$color_90;?>;
@@ -1817,6 +1828,9 @@ I {
   	color: <?=$color_91;?>;
   	font-size: 12.5px;
   }
+  
+
+  
   
   #login {
   	background-color: <?=$color_89;?>;
@@ -1861,6 +1875,7 @@ I {
   	font-size: 11px;
   	line-height: 17px;
   	clear: both;
+  	text-align: left;
   }
 
   .blog2 A {

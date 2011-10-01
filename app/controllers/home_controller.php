@@ -2,13 +2,15 @@
 
 	class HomeController extends AppController {
 		var $name = 'Home';
-//		var $uses = array('Menu');
+		var $uses = array('Blog', 'Servers');
 		
 		function index() {
 //			$menu = $this->Menu->getRoot();
 //			$this->set('menu', $menu);
 //			$this->set('page_css', 'home');
 //			$this->set('title_for_layout','Welcome');
+			$this->layout = 'corp';
+			$this->set('blog', $this->Blog->getLatest(10));
 		}
 		
 		function donate() {
