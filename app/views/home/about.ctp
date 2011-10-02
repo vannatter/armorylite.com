@@ -6,13 +6,6 @@
 
       <div class="blog2">
         Armory Lite creates a textually soothing experience based on your World of Warcraft Armory information.
-        <p>
-        <b>Testimonials</b>
-        <br>
-        One of the leading online poker guides, PokerListings, had this to say about our site: "ArmoryLite is truly one of those creative projects which make's 
-        the World of Warcraft even better! This is one great source for your WoW experience". 
-        We salute PokerListings for these kind words and if you get the craving to pick up any of the online card games, please check out their site for 
-        <a href="http://www.pokerlistings.com/poker-room-reviews">full list of the best poker rooms</a> around the net.
         <p>        
         <b>Why?</b>
         <br>
@@ -28,9 +21,9 @@
         Our cache copies are linked to your characters and give a historic view of your gear, which can be accessed from the administration
         system. In addition, you can access your cached Armory data whenever the official source is down for maintenance or overloaded.
         <p>
-        To date, we've cached over 8 million unique users and have detailed statistic information on over 3 million of those users. We have a
-        back log of over 5 million users to still parse through, so our service and analytical data is constantly becoming more impressive and fun.
-        We're storing over 100 gigabytes of text data already, and growing at a rate of 2 gigabyte a week!
+        To date, we've cached over 10 million unique users and have detailed statistic information on over 4 million of those users. We have a
+        back log of over 6 million users to still parse through, so our service and analytical data is constantly becoming more impressive and fun.
+        We're storing over 200 gigabytes of text data already, and growing at a rate of 2 gigabyte a week!
         <p>        
         <p>
         We're constantly tweaking and improving the service for our users, by fixing reported bugs and adding new features. We appreciate 
