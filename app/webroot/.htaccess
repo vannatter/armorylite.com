@@ -1,3 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.armorylite.com$ [NC]
+RewriteRule ^(.*)$ http://armorylite.com/$1 [R=301,L]
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-d
