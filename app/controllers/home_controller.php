@@ -5,12 +5,14 @@
 		var $uses = array('Blog', 'Servers');
 		
 		function index() {
-//			$menu = $this->Menu->getRoot();
-//			$this->set('menu', $menu);
-//			$this->set('page_css', 'home');
-//			$this->set('title_for_layout','Welcome');
 			$this->layout = 'corp';
+			$this->set('title_for_layout','Information, Simplified.');
 			$this->set('blog', $this->Blog->getLatest(10));
+		}
+		
+		function about() {
+			$this->layout = 'corp';
+			$this->set('title_for_layout','Information, Simplified.');
 		}
 		
 		function donate() {

@@ -1,7 +1,7 @@
 <table border="0" width="100%">
   <tr valign="top">
     <td>
-      <div class="imghead"><img src="/images/about.gif" alt="About Armory Lite" width="200" height="25"></div>
+      <div class="imghead"><img src="/img/about.gif" alt="About Armory Lite" width="200" height="25"></div>
       <div class="hr"></div>
 
       <div class="blog2">

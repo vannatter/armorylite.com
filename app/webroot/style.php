@@ -229,6 +229,7 @@ A {
 
 .imghead {
   height: 25px;
+  text-align: left;
 }
 
 .hr {
