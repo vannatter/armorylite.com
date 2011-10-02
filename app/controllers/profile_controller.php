@@ -121,11 +121,35 @@
 					$re = json_decode($data);
 					$this->cakeError('e404', array('reason' => $re->reason));
 				} elseif ($info['http_code'] == "503") {
-					$re = json_decode($data);
-					$this->cakeError('e503', array('reason' => $re->reason));
+					// unavailable, use our last cache if we have one, otherwise drop to error..
+					$edata = $data;
+					$data = $this->Info->getLatest($character['Characters']['Character_ID']);
+					
+					if ($data['Info']['id']) {
+						$gz_data = gzuncompress($data['Info']['data']);
+						$parsed_data = json_decode($gz_data);
+						$counter = $this->Counters->setCounter($character['Characters']['Character_ID']);
+						$gear = $this->Profile->buildGearSet($parsed_data->items);
+						$settings->is_archive = true;
+					} else {
+						$re = json_decode($edata);
+						$this->cakeError('e503', array('reason' => $re->reason));
+					}
 				} else {
-					$re = json_decode($data);
-					$this->cakeError('e500', array('reason' => $re->reason));
+					// server error, use our last cache if we have one, otherwise drop to error..
+					$edata = $data;
+					$data = $this->Info->getLatest($character['Characters']['Character_ID']);
+					
+					if ($data['Info']['id']) {
+						$gz_data = gzuncompress($data['Info']['data']);
+						$parsed_data = json_decode($gz_data);
+						$counter = $this->Counters->setCounter($character['Characters']['Character_ID']);
+						$gear = $this->Profile->buildGearSet($parsed_data->items);
+						$settings->is_archive = true;
+					} else {
+						$re = json_decode($edata);
+						$this->cakeError('e500', array('reason' => $re->reason));
+					}					
 				}
 				
 				// set output variables..

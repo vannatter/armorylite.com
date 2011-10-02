@@ -44,10 +44,12 @@
 
     		$final_grid = array();
     		for ($i=count($grid); $i >= 0; $i--) {	
-    			foreach ($grid[$i] as $gr) {
-		    		$final_grid[$i][$gr->value.".".$gr->id] = $gr;
+    			if (@$grid[$i]) {
+	    			foreach ($grid[$i] as $gr) {
+			    		$final_grid[$i][$gr->value.".".$gr->id] = $gr;
+	    			}
+		    		krsort($final_grid[$i]);
     			}
-	    		krsort($final_grid[$i]);
     		}
     		return $final_grid;
 	    }

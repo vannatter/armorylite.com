@@ -49,7 +49,7 @@
             <div class="arm_box">
               <div class="arm_box_top">
                 <span id="box_ele">
-                <select class="w9" name="_country">
+                <select class="w9 search_sel" name="_country">
                   <option value="all">All</option>
                   <option value="us">US</option>
                   <option value="eu">EU</option>

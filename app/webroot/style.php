@@ -1811,6 +1811,14 @@ I {
   	color: <?=$color_91;?>;
   	font-size: 12px;
   }
+  
+  .search_sel {
+  	background-color: <?=$color_89;?>;
+  	border: 1px solid <?=$color_90;?>;
+  	font-family: verdana, helvetica, serif;
+  	color: <?=$color_91;?>;
+  	font-size: 12px;
+  }  
 
   .builder_name {
   	background-color: <?=$color_89;?>;

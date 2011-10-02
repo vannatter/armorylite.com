@@ -45,16 +45,15 @@
 				curl_setopt($curl, CURLOPT_TIMECONDITION, CURL_TIMECOND_IFMODSINCE);
 				curl_setopt($curl, CURLOPT_TIMEVALUE, $last_time_accessed);
 			}
-		
+
 			$header = array (
 				"Date: " . $request_date,
 				"Authorization: " . $authorization
 			); 
 			curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-		
+			
   			$f = curl_exec($curl);
 			$i = curl_getinfo($curl);
-  			
   			curl_close($curl);
   			
   			return array($f, $i);

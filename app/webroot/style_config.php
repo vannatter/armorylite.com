@@ -224,7 +224,7 @@
       $color_106  = "#666666";    ## nav->my_on->bg
       $color_107  = "#222222";    ## nav->my_on->text
 
-      $mesh_01  = "/images/mesh.gif";
+      $mesh_01  = "/img/mesh.gif";
       break;
     
     case "l":

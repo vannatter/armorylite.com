@@ -45,13 +45,13 @@
       <div class="box_space">&nbsp;</div>
  
       <div id="main_nav" class="<?=((($set->page=="m")||(!$set->page)) ? "box_on" : "box_off")?>">
-        <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/");?>">Main</a>
+        <a href="<?=(($set->is_saved) ? "#" : $set->lite_url . "/");?>">Main</a>
       </div>
       <div id="talents_nav" class="<?=(($set->page=="t") ? "box_on" : "box_off")?>">
-        <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/t");?>">Talents</a>
+        <a href="<?=(($set->is_saved) ? "#" : $set->lite_url . "/t");?>">Talents</a>
       </div>
       <div id="rep_nav" class="<?=(($set->page=="r") ? "box_on" : "box_off")?>">
-        <a href="<?=(($set->is_archive||$set->is_saved) ? "#" : $set->lite_url . "/r");?>">Rep</a>
+        <a href="<?=(($set->is_saved) ? "#" : $set->lite_url . "/r");?>">Rep</a>
       </div>
       <? if (!$set->anon) { ?>
       <div id="guild_nav" class="<?=(($set->page=="g") ? "box_on" : "box_off")?>">
@@ -73,7 +73,7 @@
 
     <? if ($set->is_archive) { ?>
       <div class="subw">
-        You are viewing an archived profile. <a href="<?=$set->lite_url;?>">Click here for a live version</a>.
+        This is a cached profile, you can try a <a href="<?=$set->lite_url;?>">live version</a> or the <a href="http://<?= $set->z; ?>.battle.net/wow/en/character/<?= $set->r; ?>/<?= $set->n; ?>/simple">official armory</a>.
       </div>
       <br>
     <? } ?>
