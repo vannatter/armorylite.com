@@ -65,7 +65,7 @@
             </div>
     
             <div class="navelem">
-              <div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="/lostpassword.php">Forgot Your Password?</a></div>
+              <div class="navele" onMouseOver="this.className='navele_on'" onMouseOut="this.className='navele'"><a href="http://conflct.com/resetpassword">Forgot Your Password?</a></div>
             </div>
     
   

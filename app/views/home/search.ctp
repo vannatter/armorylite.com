@@ -34,7 +34,7 @@
                 </select>
                 </span>
                 <span id="box_ele">
-                  <input class="w12" type="text" id="login" name="_name" maxlength="20" size="10" value="Search" onFocus="ghost_txt_inc(this, 'Search', 'login_on')" onBlur="ghost_txt_out(this, 'Search', 'login')">
+                  <input class="w12 defaultText" type="text" id="login" name="_name" maxlength="20" size="10" title="Search" />
                 </span>
               </div>
             </div>        
