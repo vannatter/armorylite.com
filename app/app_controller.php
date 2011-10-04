@@ -43,7 +43,6 @@
       exit;
     }
     
-    
     function scrubRealm($realm) {
     	$tmp = $realm;
     	$tmp = strtolower(trim($tmp));

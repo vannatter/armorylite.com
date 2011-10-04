@@ -150,7 +150,7 @@
 					$s = "Europe";
 					break;
 				case "tw":
-					$s = "Tawain";
+					$s = "Taiwan";
 					break;
 				case "cn":
 					$s = "China";

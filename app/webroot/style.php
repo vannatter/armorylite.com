@@ -136,6 +136,12 @@ A {
   padding: 5px;
   text-align: center;
 }
+.corp_box_buffer2 {
+  background-color: #191919;
+  margin: 5px;
+  padding: 5px;
+  text-align: left;
+}
 
 .box_buffer {
   background-color: #191919;
@@ -516,8 +522,9 @@ I {
   font-weight: bold;
   cursor: pointer;
 }
-.searchgrid_head {
-	border: 1px dotted <?=$color_06;?>;
+.searchgrid_head, .searchgrid_head th {
+	border: 1px dotted <?=$color_06;?> !important;
+	text-align: center !important;
 }
 .searchgrid_row {
   padding: 3px;

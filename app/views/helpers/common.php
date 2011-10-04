@@ -21,8 +21,7 @@
       
       return "<span class=\"underline\" title=\"" . date("m-d-Y h:i:s A", $seconds) . "\">" . $return . "</span>";
     }
-    
-    
+
 	function show_ad($loc, $typ) {
       $_t = "";
       $_id = -1;
