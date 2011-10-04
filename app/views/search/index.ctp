@@ -57,7 +57,7 @@
 					<td class=searchgrid_col><?= $s['Characters']['friendly_server_name']; ?></td>
 					<td class=searchgrid_col><?= $this->Profile->getRegion($s['Characters']['Region']); ?></td>
 				</tr>          	
-          	
+          		<? $cnt++; ?>
           	<? } ?>
           	<? if ($cnt == 0) { ?>
 				<tr class=searchgrid_row>
