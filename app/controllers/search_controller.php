@@ -12,9 +12,9 @@
 			$this->set('region', $region);
 
 			if ($region == "all") {
-				$searches = $this->Characters->find('all', array('conditions' => array('Characters.Toon' => $name), 'limit' => 100));
+				$searches = $this->Characters->find('all', array('conditions' => array('Characters.Toon LIKE' => '%'.$name.'%'), 'limit' => 100));
 			} else {
-				$searches = $this->Characters->find('all', array('conditions' => array('Characters.Region' => $region, 'Characters.Toon' => $name), 'limit' => 100));
+				$searches = $this->Characters->find('all', array('conditions' => array('Characters.Region' => $region, 'Characters.Toon LIKE' => '%'.$name.'%'), 'limit' => 100));
 			}
 			
 			for ($i=0; $i < count($searches); $i++) {
