@@ -9,3 +9,5 @@ syntax: regexp
 ^app/webroot/icons$
 syntax: regexp
 ^app/webroot/img/icons$
+syntax: regexp
+^app/config/core\.php$

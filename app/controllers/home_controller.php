@@ -28,7 +28,14 @@
 		function search() {
 			$this->layout = 'corp';
 			$this->set('title_for_layout','Search');
-		}		
+		}	
+
+		function browse() {
+			$this->layout = 'corp';
+			$this->set('title_for_layout', 'Browse');
+			$servers = $this->Servers->find('all', array('conditions' => array('Servers.id >' => 0), 'order' => array('Servers.region DESC', 'Servers.server_name ASC')));
+			$this->set('servers', $servers);			
+		}
 				
 		function donate_redirect() {
 			header("location: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=dustin%40vannatter%2ecom&item_name=Armorylite%2ecom&no_shipping=0&cn=Suggestions%2c%20Comments%2c%20Etc%2e&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8");

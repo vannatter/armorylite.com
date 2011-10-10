@@ -5,7 +5,8 @@
 	Router::connect('/donate.php', array('controller' => 'home', 'action' => 'donate'));
 	Router::connect('/dosearch.php', array('controller' => 'home', 'action' => 'search'));
 	Router::connect('/donate', array('controller' => 'home', 'action' => 'donate_redirect'));
-
+	Router::connect('/dobrowse.php', array('controller' => 'home', 'action' => 'browse'));
+	
 	Router::connect('/search/*', array('controller' => 'search', 'action' => 'index'));
 	
 	Router::connect('/us/*', array('controller' => 'profile', 'action' => 'index', 'us'));
