@@ -22,6 +22,31 @@
       return "<span class=\"underline\" title=\"" . date("m-d-Y h:i:s A", $seconds) . "\">" . $return . "</span>";
     }
 
+    
+    function pager($set, $total, $cur=0, $perpage=100) {
+    	
+      	$tot = $total;
+      	$pages = floor($tot / $perpage);
+      
+      	if ($cur == 0) {
+        	$tmp = "1 ";
+      	} else {
+        	$tmp = "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/0\">1</a> ";
+      	}
+      
+      	for ($i = 1; $i <= $pages; $i++) {
+        	if ($cur == ($perpage*$i)) {
+          		$tmp .= " " . ($i+1). " ";        
+        	} else {
+          		$tmp .= "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/" . ($perpage*$i) . "\">" . ($i+1) . "</a> ";
+        	}
+      	}
+      
+      	$tmp .= " (" . $tot . " Total)";
+      	return $tmp;
+      
+    }
+    
 	function show_ad($loc, $typ) {
       $_t = "";
       $_id = -1;

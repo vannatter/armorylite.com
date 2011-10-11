@@ -21,7 +21,7 @@
               <? foreach ($servers as $server) { ?>
                 <?= (($x==0) ? "<tr>":""); ?>
                   <td class="td">
-                    <a href="/browse/<?=strtolower($server['Servers']['region']);?>/<?=strtolower($server['Servers']['url_name']);?>/"><?=$server['Servers']['server_name'];?> (<?=strtoupper($server['Servers']['region']);?>)</a>
+                    <a href="/<?=strtolower($server['Servers']['region']);?>/<?=strtolower($server['Servers']['url_name']);?>/"><?=$server['Servers']['server_name'];?> (<?=strtoupper($server['Servers']['region']);?>)</a>
                   </td>
                 <?
                   $x++;

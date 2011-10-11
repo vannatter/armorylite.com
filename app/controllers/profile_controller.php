@@ -2,11 +2,11 @@
 
 	class ProfileController extends AppController {
 		var $name = 'Profile';
-		var $uses = array('Characters', 'Info', 'Counters', 'Talents');
+		var $uses = array('Characters', 'Info', 'Counters', 'Talents', 'Servers');
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
-		function index($region, $realm="*", $toon="*", $page="m", $archive_id="") {
+		function index($region, $realm="*", $toon="*", $page="m", $extra_id="") {
 					
 			$realm = $this->scrubRealm($realm);
 			$toon = $this->scrubToon($toon);
@@ -26,8 +26,49 @@
 				echo "this should trigger region browsing..";
 				exit;
 			} elseif ($toon == "*") {
-				echo "this should trigger realm browsing..";
-				exit;
+				
+				$start = intval($extra_id);
+				$settings->x = $start;
+				
+				switch ($page) {
+					case "s":
+							$settings->p = "s";
+							$settings->sort = "Score DESC";
+							break;
+					case "l":
+							$settings->p = "l";
+							$settings->sort = "Level DESC";
+							break;
+					case "c":
+							$settings->p = "c";
+							$settings->sort = "Class ASC";
+							break;
+					case "n":
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+					case "m":
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+					default:
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+					
+				}
+				
+				
+				$server = $this->Servers->getServer($realm, $region);
+				$characters = $this->Characters->browse($region, $realm, $settings->sort, $start, 100);
+				$count = $this->Characters->count($region, $realm);
+				
+				$this->set('count', $count);
+				$this->set('characters', $characters);
+				$this->set('set', $settings);
+				$this->set('server', $server);
+				$this->render('../browse/realm');
+				
 			} else {
 				
 				$character = $this->Characters->getByPath($region, $realm, $toon);
