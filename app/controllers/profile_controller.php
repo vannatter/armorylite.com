@@ -67,6 +67,7 @@
 				$this->set('characters', $characters);
 				$this->set('set', $settings);
 				$this->set('server', $server);
+				$this->set('title_for_layout', $server['Servers']['server_name'] . ' (' . strtoupper($region) . ') - Browse');
 				$this->render('../browse/realm');
 				
 			} else {
