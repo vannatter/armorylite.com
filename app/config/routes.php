@@ -8,6 +8,12 @@
 	Router::connect('/dobrowse.php', array('controller' => 'home', 'action' => 'browse'));
 	
 	Router::connect('/search/*', array('controller' => 'search', 'action' => 'index'));
+
+	Router::connect('/browse/us/*', array('controller' => 'profile', 'action' => 'index', 'us'));
+	Router::connect('/browse/eu/*', array('controller' => 'profile', 'action' => 'index', 'eu'));
+	Router::connect('/browse/tw/*', array('controller' => 'profile', 'action' => 'index', 'tw'));
+	Router::connect('/browse/cn/*', array('controller' => 'profile', 'action' => 'index', 'cn'));
+	Router::connect('/browse/kr/*', array('controller' => 'profile', 'action' => 'index', 'kr'));
 	
 	Router::connect('/us/*', array('controller' => 'profile', 'action' => 'index', 'us'));
 	Router::connect('/eu/*', array('controller' => 'profile', 'action' => 'index', 'eu'));
