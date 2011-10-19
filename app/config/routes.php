@@ -9,6 +9,8 @@
 	
 	Router::connect('/search/*', array('controller' => 'search', 'action' => 'index'));
 
+	Router::connect('/anon/*', array('controller' => 'profile', 'action' => 'anon'));
+	
 	Router::connect('/browse/us/*', array('controller' => 'profile', 'action' => 'index', 'us'));
 	Router::connect('/browse/eu/*', array('controller' => 'profile', 'action' => 'index', 'eu'));
 	Router::connect('/browse/tw/*', array('controller' => 'profile', 'action' => 'index', 'tw'));
