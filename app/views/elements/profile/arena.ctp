@@ -44,7 +44,13 @@
 				
 				<? foreach ($d->pvp->arenaTeams as $team) { ?>		
 					<tr>
-						<td><?= $team->name; ?></td>
+						<td>
+							<? if ($set->anon) { ?>
+								Anonymous
+							<? } else { ?>
+								<?= $team->name; ?>
+							<? } ?>
+						</td>
 						<td><?= $team->size; ?></td>
 						<td><?= $team->personalRating; ?></td>
 						<td><?= $team->teamRating; ?></td>
