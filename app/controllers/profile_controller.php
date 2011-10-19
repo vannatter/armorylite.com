@@ -30,7 +30,7 @@
 					$settings->r = $realm;
 					$settings->n = $toon;    		
 
-    				list($parsed_data, $counter, $gear) = $this->_parseCharacter($region, $realm, $toon, $settings);
+    				list($parsed_data, $counter, $gear, $chid) = $this->_parseCharacter($region, $realm, $toon, $settings);
 				
 					// set output variables..
 					$this->set('d', $parsed_data);
@@ -138,7 +138,7 @@
 				
 			} else {
 				
-				list($parsed_data, $counter, $gear) = $this->_parseCharacter($region, $realm, $toon, $settings);
+				list($parsed_data, $counter, $gear, $chid) = $this->_parseCharacter($region, $realm, $toon, $settings);
 				
 				// set output variables..
 				$this->set('d', $parsed_data);
@@ -168,7 +168,7 @@
 						break;
 						
 					case "anonymize":
-						$anon_id = $this->Anons->anonymize($character['Characters']['Character_ID']);
+						$anon_id = $this->Anons->anonymize($chid);
 						if ($anon_id) {
 							$this->redirect('/anon/'.$anon_id);
 							exit;								
@@ -311,7 +311,7 @@
 				}					
 			}			
 		
-			return array($parsed_data, $counter, $gear); 
+			return array($parsed_data, $counter, $gear, $character['Characters']['Character_ID']); 
 			
 		}
 		
