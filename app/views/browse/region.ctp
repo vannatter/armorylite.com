@@ -35,7 +35,7 @@
             <? foreach ($characters as $char) { ?>
               <tr class=searchgrid_row>
                 <td class=searchgrid_col><a href="/<?= $char['Characters']['Region']; ?>/<?= $char['Characters']['Server']; ?>/<?=strtolower(stripslashes($char['Characters']['Toon']));?>/"><?=ucfirst($char['Characters']['Toon']);?></a></td>
-                <td class=searchgrid_col><?= $this->Common->unscrubRealm($char['Characters']['Server']); ?>&nbsp;</td>
+                <td class=searchgrid_col><a href="/<?= $char['Characters']['Region']; ?>/<?= $char['Characters']['Server']; ?>/"><?= $this->Common->unscrubRealm($char['Characters']['Server']); ?></a>&nbsp;</td>
                 <td class=searchgrid_col><?= $this->Profile->getClass($char['Characters']['Class']); ?>&nbsp;</td>
                 <td class=searchgrid_col><?= $char['Characters']['Level']; ?>&nbsp;</td>
                 <td class=searchgrid_col><?= $this->Profile->getFaction($char['Characters']['Race']); ?>&nbsp;</td>
