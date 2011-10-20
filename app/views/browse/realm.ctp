@@ -5,7 +5,7 @@
     <form name="_browse">
      <div class="headernav">
       <div class="floatleft nav"><a href="/"><img src="/img/logo_mid_dark.gif" width="106" height="38" border="0" alt="Armory Lite"></a></div>
-      <div class="box_off floatleft nav"><a href="/dobrowse.php">Browse</a> &gt; <a href="/<?=strtolower($set->z)?>"><?=strtoupper($set->z)?></a>a> &gt; <?= $server['Servers']['server_name']; ?>&nbsp;</div>
+      <div class="box_off floatleft nav"><a href="/dobrowse.php">Browse</a> &gt; <a href="/<?=strtolower($set->z)?>"><?=strtoupper($set->z)?></a> &gt; <?= $server['Servers']['server_name']; ?>&nbsp;</div>
               
       <div class="box_on floatright nav">
         &nbsp;Sort All: <select id="filter_browse" data-href="/<?= $set->z; ?>/<?= $set->r; ?>/*/" class="w5" name="_sort">
