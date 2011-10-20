@@ -200,6 +200,7 @@
 					$char = array(
 						'Character_ID' => $character['Characters']['Character_ID'],
 						'Last_Updated' => ($parsed_data->lastModified / 1000),
+						'Score' => $parsed_data->items->averageItemLevelEquipped,
 						'Level' => $parsed_data->level,
 						'Class' => $parsed_data->class,
 						'Race' => $parsed_data->race,
@@ -221,12 +222,14 @@
 					$this->Characters->save($char);
 					$char_id = $character['Characters']['Character_ID'];
 				} else {
+					
 					// add new row, we don't know about this character..
 					$char = array(
 						'Region' => $region,
 						'Server' => $realm,
 						'Toon' => $parsed_data->name,
 						'Last_Updated' => ($parsed_data->lastModified / 1000),
+						'Score' => $parsed_data->items->averageItemLevelEquipped,
 						'Level' => $parsed_data->level,
 						'Class' => $parsed_data->class,
 						'Race' => $parsed_data->race,
