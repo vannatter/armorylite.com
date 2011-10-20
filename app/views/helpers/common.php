@@ -23,6 +23,13 @@
     }
 
     
+	function unscrubRealm($realm) {
+    	$tmp = $realm;
+    	$tmp = str_replace("-", " ", $tmp);
+    	$tmp = ucwords(trim($tmp));
+    	return $tmp;
+    }     
+    
     function pager($set, $total, $cur=0, $perpage=100) {
     	
       	$tot = $total;

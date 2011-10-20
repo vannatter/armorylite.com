@@ -91,8 +91,46 @@
 			$settings->n = $toon;
 			
 			if ($realm == "*") {
-				echo "this should trigger region browsing..";
-				exit;
+
+				$start = intval($extra_id);
+				$settings->x = $start;
+				
+				switch ($page) {
+					case "s":
+							$settings->p = "s";
+							$settings->sort = "Score DESC";
+							break;
+					case "l":
+							$settings->p = "l";
+							$settings->sort = "Level DESC";
+							break;
+					case "c":
+							$settings->p = "c";
+							$settings->sort = "Class ASC";
+							break;
+					case "n":
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+					case "m":
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+					default:
+							$settings->p = "n";
+							$settings->sort = "Toon ASC";
+							break;
+				}
+				
+				$characters = $this->Characters->browseRegion($region, $settings->sort, $start, 100);
+				$count = $this->Characters->countRegion($region);
+				
+				$this->set('count', $count);
+				$this->set('characters', $characters);
+				$this->set('set', $settings);
+				$this->set('title_for_layout', '(' . strtoupper($region) . ') - Browse');
+				$this->render('../browse/region');
+				
 			} elseif ($toon == "*") {
 				
 				$start = intval($extra_id);

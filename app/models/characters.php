@@ -21,5 +21,14 @@
       		return $this->find('count', array('conditions' => array('Characters.Region' => $region, 'Characters.Server' => $realm)));
     	}    	    
     	
+	    function browseRegion($region, $sort="Toon ASC", $start=0, $length=100) {
+      		return $this->find('all', array('conditions' => array('Characters.Region' => $region), 'limit' => $start.','.$length, 'order' => array('Characters.'.$sort, 'Characters.Toon ASC'), 'recursive' => 1));
+    	}    	
+    	
+	    function countRegion($region) {
+      		return $this->find('count', array('conditions' => array('Characters.Region' => $region)));
+    	}    	    
+    	
+    	
 	}
 ?>

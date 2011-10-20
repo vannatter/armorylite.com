@@ -4,7 +4,7 @@
     	var $useTable = 'servers';
     	var $useDbConfig = 'default';
     	var $primaryKey = 'id';
-    
+    	
 	    function getServers($region) {
 			$i = $this->find('all', array('conditions' => array('Servers.region' => $region)));
     		return $i;
