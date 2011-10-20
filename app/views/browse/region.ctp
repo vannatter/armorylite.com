@@ -62,7 +62,7 @@
           
           <br>
           <div class="key">
-            <?= $this->Common->pager($set, $count, $set->x, 2); ?>
+            <?= $this->Common->pager($set, $count, $set->x, 100); ?>
           </div>
                     
 
