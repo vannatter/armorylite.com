@@ -2,57 +2,72 @@
   
 	class CommonHelper extends Helper {
 		
-    	function dateToWords($seconds) {
-      		date_default_timezone_set("EST");
-      		$new_seconds = strtotime("now") - $seconds;
+		function dateToWords($seconds) {
+			date_default_timezone_set("EST");
+			$new_seconds = strtotime("now") - $seconds;
+      		$days = intval(intval($new_seconds) / (3600*24));
+      		$hours = intval(intval($new_seconds) / 3600);
+      		$minutes = (intval($new_seconds) / 60) % 60;
       
-      $days = intval(intval($new_seconds) / (3600*24));
-      $hours = intval(intval($new_seconds) / 3600);
-      $minutes = (intval($new_seconds) / 60) % 60;
-      if($days > 0) {
-        $return = ($days == 1) ? $days." day" : number_format($days, 0, ".", ",") . " days";
-      } elseif($hours > 0) {
-        $return = ($hours == 1) ? $hours." hour" : $hours." hours";
-      } elseif($minutes > 0) {
-        $return = ($minutes == 1) ? $minutes." minute" : $minutes." minutes";
-      } else {
-        $return = "less than a minute";
-      }
+      		if ($days > 0) {
+        		$return = ($days == 1) ? $days." day" : number_format($days, 0, ".", ",") . " days";
+      		} elseif ($hours > 0) {
+        		$return = ($hours == 1) ? $hours." hour" : $hours." hours";
+      		} elseif ($minutes > 0) {
+        		$return = ($minutes == 1) ? $minutes." minute" : $minutes." minutes";
+      		} else {
+        		$return = "less than a minute";
+      		}
       
-      return "<span class=\"underline\" title=\"" . date("m-d-Y h:i:s A", $seconds) . "\">" . $return . "</span>";
-    }
+      		return "<span class=\"underline\" title=\"" . date("m-d-Y h:i:s A", $seconds) . "\">" . $return . "</span>";
+	    }
 
-    
-	function unscrubRealm($realm) {
-    	$tmp = $realm;
-    	$tmp = str_replace("-", " ", $tmp);
-    	$tmp = ucwords(trim($tmp));
-    	return $tmp;
-    }     
-    
-    function pager($set, $total, $cur=0, $perpage=100) {
+		function unscrubRealm($realm) {
+	    	$tmp = $realm;
+	    	$tmp = str_replace("-", " ", $tmp);
+	    	$tmp = ucwords(trim($tmp));
+	    	return $tmp;
+	    } 
+
+    	function gearscore_color($score) {
+      		$_qual = 0;
+      		if ($score >= 5800) {
+        		$_qual = 5;
+      		} else if ( ($score < 5800) && ($score >= 4800) ) {
+        		$_qual = 4;
+      		} else if ( ($score < 4800) && ($score >= 3800) ) {
+        		$_qual = 3;
+      		} else if ( ($score < 3800) && ($score >= 2800) ) {
+        		$_qual = 2;
+      		} else if ( ($score < 2800) ) {
+        		$_qual = 1;
+      		}
+      		return $_qual;
+    	}    
     	
-      	$tot = $total;
-      	$pages = floor($tot / $perpage);
-      
-      	if ($cur == 0) {
-        	$tmp = "1 ";
-      	} else {
-        	$tmp = "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/0\">1</a> ";
-      	}
-      
-      	for ($i = 1; $i <= $pages; $i++) {
-        	if ($cur == ($perpage*$i)) {
-          		$tmp .= " " . ($i+1). " ";        
-        	} else {
-          		$tmp .= "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/" . ($perpage*$i) . "\">" . ($i+1) . "</a> ";
-        	}
-      	}
-      
-      	$tmp .= " (" . $tot . " Total)";
-      	return $tmp;
-      
-    }
+    
+	    function pager($set, $total, $cur=0, $perpage=100) {
+	    	
+	      	$tot = $total;
+	      	$pages = floor($tot / $perpage);
+	      
+	      	if ($cur == 0) {
+	        	$tmp = "1 ";
+	      	} else {
+	        	$tmp = "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/0\">1</a> ";
+	      	}
+	      
+	      	for ($i = 1; $i <= $pages; $i++) {
+	        	if ($cur == ($perpage*$i)) {
+	          		$tmp .= " " . ($i+1). " ";        
+	        	} else {
+	          		$tmp .= "<a href=\"/" . $set->z . "/" . $set->r . "/" . $set->n . "/" . $set->p . "/" . ($perpage*$i) . "\">" . ($i+1) . "</a> ";
+	        	}
+	      	}
+	      
+	      	$tmp .= " (" . $tot . " Total)";
+	      	return $tmp;
+	    }
     
 	function show_ad($loc, $typ) {
       $_t = "";

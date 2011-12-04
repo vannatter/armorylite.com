@@ -3128,3 +3128,28 @@ I {
 	font-size: 11px;
 	font-weight: normal;
 }
+
+
+.transmorg_link, .transmorg_link A {
+	color: #FF80D2;
+	text-decoration: none;
+	text-indent: 7px;
+	font-weight: normal;
+	font-size: 10px;
+	display: block;
+	white-space: nowrap;
+	clear: both;
+	padding: 1px 0px 1px 0px !important;
+	margin: 0 !important;
+	line-height: 14px;
+}
+
+.transmorg_link:hover { 
+  background-color: <?=$color_03;?>;
+  color: <?=$color_02;?>;
+}
+.transmorg_link a:hover { 
+  background-color: <?=$color_03;?>;
+  color: <?=$color_02;?>;
+}
+
