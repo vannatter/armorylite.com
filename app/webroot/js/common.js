@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	var _sql_log_height = parseInt($("#sql_log_frame").height());
+	
 	$(".defaultText").focus(function(srcc) {
         if ($(this).val() == $(this)[0].title) {
 	        $(this).removeClass("defaultTextActive");
@@ -95,6 +97,39 @@ $(document).ready(function() {
 			$('#stats_main_'+i).fadeIn();
 		}
 	});
+	
+	
+	  $('.flash_neg').click(function(){  
+		  $(this).animate({opacity: 1.0}, 1).fadeOut();  
+		  return false;  
+	  });  
+	  $('.flash_pos').click(function(){  
+	    $(this).animate({opacity: 1.0}, 1).fadeOut();  
+	    return false;  
+	  });  
+	  $('.flash_pos').animate({opacity: 1.0}, 5000).fadeOut();  
+
+	  
+	  /* DEBUG */
+	  $('#sql_log_frame_tab').bind({
+	    click: function(e) {
+	      var current_height = parseInt($('#sql_log_frame').height());
+	      var new_height = $(this).outerHeight();
+	      
+	      if (current_height <= 30) {
+	        new_height = _sql_log_height + "px"
+	        $(this).text("Hide Debug");
+	      } else {
+	        $(this).text("Show Debug");
+	      }
+	      
+	      $('#sql_log_frame').animate({
+	        height: new_height
+	      }, 500);
+	    }
+	  });
+	  $('#sql_log_frame_tab').trigger("click");
+	  /* DEBUG */	
 	
 });
 

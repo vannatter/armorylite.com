@@ -5,6 +5,7 @@
 		<title>Armory Lite: <?= h( $title_for_layout ); ?></title>
 		<?= $html->charset() . "\n"; ?>
 		<link rel="stylesheet" href="/style.php?s=d&x=99" type="text/css">		
+		<link rel="stylesheet" href="/css/admin.css" type="text/css">		
 		<?= $javascript->link('jquery') . "\n"; ?>
 		<?= $javascript->link('hoverintent') . "\n"; ?>
 		<?= $javascript->link('common') . "\n"; ?>
@@ -29,49 +30,20 @@
 	<div id="AL">
     	<div id="darkBackgroundLayer" class="darkenBackground" style="visibility: hidden; display: none;"></div>
 		<body>
+		
 			<?= $session->flash(); ?>
-			<div id="content" class="<?= ((@$page_css) ? @$page_css:"armorylite_wide"); ?>">
+			<div class="admin_head">
+				<div class="logo"><a href="/admin"><img src="/img/logo_mid_dark.gif" width="106" height="38" border="0" /></a></div>
+				<div class="admin_nav"><?= $this->element('navigation/admin_top'); ?></div>
+			</div>
 			
-			<div class="corp_main_left">
-
-          		<div class="corp_header">        
-            		<div class="corp_header_left">
-              			<a href="/"><img src="/img/head_left.jpg" border="0" alt="Armory Lite" width="265" height="71"></a>
-            		</div>      
-            		<div class="corp_header_right">
-              			<div class="corp_header_right_top">
-                			<div id="pcount">???</div>
-              			</div>
-              			<div class="corp_header_right_bot">
-                			<img border="0" usemap="#corpnavv" width="299" height="37" src="/img/head_nav.gif">
-              			</div>
-            		</div>
-          		</div>  
-          
-          		<div class="corp_content">
-					<?= $content_for_layout; ?>
-				</div>
-
-		      	<?= $this->element('corp/conflct'); ?>
-      	
-      		</div>
-
-			<div class="corp_main_right">
-	        	<?= $this->Common->show_ad("homepage","tall"); ?> 
-	      	</div>			
+			<div id="content" class="<?= ((@$page_css) ? @$page_css:"armorylite"); ?>">
+				<?= $content_for_layout; ?>
+			</div>
 
 			<? if(Configure::read('Settings.site_mode') == 2) { ?><div id="sql_log_frame"><div id="sql_log_frame_tab">Show Debug</div><div class="sql_log_content"><?php echo $this->element('sql_dump'); ?></div></div><? } ?>
 		</body>
 	</div>
-	
-	<map name="corpnavv">
-		<area coords="11,2,46,22" shape="rect" href="/" alt="Home">
-		<area coords="54,2,90,22" shape="rect" href="/about.php" alt="About">
-		<area coords="97,2,135,22" shape="rect" href="/dosearch.php" alt="Search">
-		<area coords="143,2,183,22" shape="rect" href="/dobrowse.php" alt="Browse">
-		<area coords="192,2,230,22" shape="rect" href="/donate.php" alt="Donate">
-		<area coords="238,2,288,22" shape="rect" href="/advertise.php" alt="Advertise">
-  	</map>	
 		
 </html>
 
