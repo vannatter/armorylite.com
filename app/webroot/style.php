@@ -3180,6 +3180,10 @@ I {
 	background-color: #222;
 }
 
+.stream {
+	clear: both;
+	margin: 10px 0px 10px 0px;
+}
 
 /* CAKE SQL LOG */
 #sql_log_frame_tab { padding: 3px 10px; background-color: #111; border: 1px solid #222; left: 10px; width: 100px; position: relative; cursor: pointer; text-align: center; color: #444; }
