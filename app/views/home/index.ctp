@@ -37,6 +37,7 @@
       <div class="im imghead"><img src="/img/sitenews.gif" alt="Site News" width="200" height="25"></div>
       <div class="hr"></div>
 
+		<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=dospvp&popout_chat=true" height="301" width="221"></iframe>
 
 		<? foreach ($blog as $b) { ?>
         	<div class="blog2">
