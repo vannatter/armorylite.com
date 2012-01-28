@@ -2735,6 +2735,7 @@ I {
   	background-color: <?=$color_62;?>;
   	margin-top: -5px;
   	height: 340px;
+  	overflow: hidden;
   } 
   #talents .content .row {
     clear: both;
@@ -3128,3 +3129,65 @@ I {
 	font-size: 11px;
 	font-weight: normal;
 }
+
+
+.transmorg_link, .transmorg_link A {
+	color: #FF80D2;
+	text-decoration: none;
+	text-indent: 7px;
+	font-weight: normal;
+	font-size: 10px;
+	display: block;
+	white-space: nowrap;
+	clear: both;
+	padding: 1px 0px 1px 0px !important;
+	margin: 0 !important;
+	line-height: 14px;
+}
+
+.transmorg_link:hover { 
+  background-color: <?=$color_03;?>;
+  color: <?=$color_02;?>;
+}
+.transmorg_link a:hover { 
+  background-color: <?=$color_03;?>;
+  color: <?=$color_02;?>;
+}
+
+
+.flash_pos {
+	clear: both;
+	overflow: hidden;
+	border: 1px solid #BDF4CB;
+	padding: 10px;
+	color: #fff;
+	width: 800px;
+	margin: -1px auto 10px auto;
+	cursor: pointer;
+	font-size: 12px;
+	background-color: #222;
+}
+.flash_neg {
+	clear: both;
+	overflow: hidden;
+	border: 1px solid #FFA8A8;
+	padding: 10px;
+	color: #fff;
+	width: 800px;
+	margin: -1px auto 10px auto;
+	cursor: pointer;
+	font-size: 12px;
+	background-color: #222;
+}
+
+
+/* CAKE SQL LOG */
+#sql_log_frame_tab { padding: 3px 10px; background-color: #111; border: 1px solid #222; left: 10px; width: 100px; position: relative; cursor: pointer; text-align: center; color: #444; }
+#sql_log_frame_tab:hover { background-color: #222; }
+#sql_log_frame { width: 100%; position: fixed; bottom: 0px; z-index: 999; font-size: .8em; }
+#sql_log_frame .sql_log_content { width: 99%; margin-right: auto; margin-left: auto; border: 1px solid #333; padding: 3px 0px 3px 0px; background-color: #000; max-height: 300px; overflow: auto;  }
+#sql_log_frame .sql_log_content td, #sql_log_frame .sql_log_content th { padding: 2px 2px 2px 2px; }
+#sql_log_frame .sql_log_content th {border-bottom: 1px solid #333; }
+#sql_log_frame .sql_log_content tr:nth-child(even) { background-color: #222; }
+.cake-sql-log { width: 100%; }
+/* CAKE SQL LOG */

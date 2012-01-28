@@ -7,6 +7,14 @@
 				echo "<div data-slot=\"" . $short . "\" class=\"slot slot_" . $gear->quality . " slot_color_" . $gear->quality . (($add_class!="") ? " " . $add_class . " " : "") . "\">";
             	echo "	<div style=\"display:none;\" class=\"slot_mnu\" id=\"mnu_" . $short . "\">";
             	echo "		<div class=\"main_link_" . $gear->quality . "\"><a href=\"http://www.wowhead.com/?item=" . $gear->id . "\">" . $gear->name . " &gt;&nbsp;&nbsp;</a></div>";
+
+            	if (@count($gear->transmorgs) > 0) {
+            		echo "		<div class=\"transmorg_link\">Transmogrified to:<br/>";
+	            	foreach ($gear->transmorgs as $trans) {
+	              		echo "		<a href=\"http://www.wowhead.com/?item=" . $trans['id'] . "\">" . $trans['name'] . " &gt;&nbsp;&nbsp;</a>";
+	            	}
+	            	echo "		</div>";
+            	}
             	
             	if (@count($gear->gems) > 0) {
 	            	foreach ($gear->gems as $gem) {

@@ -172,6 +172,7 @@
 				$enchants = array();
 				$reforges = array();
 				$tinkers = array();
+				$transmorgs = array();
 				
 				foreach ($data->$obj->tooltipParams as $k=>$v) {
 	
@@ -259,6 +260,28 @@
 					}
 					// /tinker processing /////////////////////////////////////////////////////////////////					
 					
+					// transmorg processing ///////////////////////////////////////////////////////////////
+					if (substr($k, 0, 3) == "tra") {
+						
+						$item = $this->Items->getItem($v);					
+						if (!$item['Items']['Item_Index_ID']) {
+	    					list ($x, $i) = $this->Curl->getRAW("http://www.wowhead.com/item=" . $v . "&xml");
+	    					$parsed_xml = & new XML($x);
+							$parsed_xml = Set::reverse($parsed_xml);
+							
+							if ($parsed_xml['Wowhead']['Item']['id']) {
+								$item = $this->Items->addItem($parsed_xml['Wowhead']['Item']['id'], $parsed_xml['Wowhead']['Item']['name'], $parsed_xml['Wowhead']['Item']['quality']['id'], $parsed_xml['Wowhead']['Item']['level'], $parsed_xml['Wowhead']['Item']['icon']['value'], ((@$parsed_xml['Wowhead']['Item']['inventorySlot']['id']) ? $parsed_xml['Wowhead']['Item']['inventorySlot']['id'] : $parsed_xml['Wowhead']['Item']['InventorySlot']['id']));
+							}
+						}
+	
+						$tmp = array();
+						$tmp["name"] = $item['Items']['Item_Name'];
+						$tmp["quality"] = $item['Items']['Item_Quality'];
+						$tmp["id"] = $item['Items']['Item_ID'];
+						$transmorgs[] = $tmp;
+					}
+					// /transmorg processing //////////////////////////////////////////////////////////////
+															
 				}	
 				
 				$data->$obj->icon_path = $this->Curl->getIcon($data->$obj->icon);
@@ -273,6 +296,9 @@
 				}				
 				if ($tinkers) {
 					$data->$obj->tinkers = $tinkers;
+				}				
+				if ($transmorgs) {
+					$data->$obj->transmorgs = $transmorgs;
 				}				
 				$gear[$obj] = $data->$obj;
 			}
