@@ -34,9 +34,11 @@
         </div>
       </div>
 
+<!-- 
 		<div style="stream">
 		<object type="application/x-shockwave-flash" height="300" width="440" id="live_embed_player_flash" data="http://www.justin.tv/widgets/live_embed_player.swf?channel=dospvp" bgcolor="#111111"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.justin.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="channel=dospvp&auto_play=true&start_volume=25" /></object>
 		</div>
+ -->
 
       <div class="im imghead"><img src="/img/sitenews.gif" alt="Site News" width="200" height="25"></div>
       <div class="hr"></div>
