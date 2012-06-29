@@ -132,11 +132,26 @@
       }
 
       $_t .= "<div class='ad ad_" . $_width . "'>";
-      $_t .= @$phpAds_raw['html'];
+
+      #$_t .= @$phpAds_raw['html'];
+	  $_t .= "
+		<script type=\"text/javascript\"><!--
+		google_ad_client = \"ca-pub-9545030578006783\";
+		/* 120x600, created 11/11/08 */
+		google_ad_slot = \"4282316848\";
+		google_ad_width = 120;
+		google_ad_height = 600;
+		//-->
+		</script>
+		<script type=\"text/javascript\"
+		src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
+		</script>
+		";   
+      
       $_t .= "</div>";      
 
       echo $_t;    
-      
+
     } 
     
   }
