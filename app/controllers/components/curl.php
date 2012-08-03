@@ -82,8 +82,8 @@
 		        $fc = curl_exec($ch);
 		        curl_close($ch);
     
-		        $new_img = @imagecreatefromstring($fc);
-		        @imagejpeg($new_img, $local_path, 100);
+		        $new_img = imagecreatefromstring($fc);
+		        imagejpeg($new_img, $local_path, 100);
 		        return $web_path;
       		}       
     	}		
