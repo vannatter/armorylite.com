@@ -1,0 +1,18 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+*.settings
+/app/config/config.php
+/app/config/database.php
+/app/tmp
+/app/tmp/*
+/app/webroot/scripts/cache
+/app/webroot/scripts/cache/*
+/app/webroot/media
+/app/webroot/media/*
+/app/webroot/js/packed
+/app/webroot/js/packed/*
+/app/webroot/css/packed
+/app/webroot/css/packed/*
+/plugins
+/vendors
