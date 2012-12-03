@@ -251,9 +251,10 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->resil,
+						'RESIL' => $parsed_data->stats->pvpResilienceRating,
 						'HK' => $parsed_data->pvp->totalHonorableKills
 					);
+					
 					$this->Characters->save($char);
 					$char_id = $character['Characters']['Character_ID'];
 				} else {
@@ -280,7 +281,7 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->resil,
+						'RESIL' => $parsed_data->stats->pvpResilienceRating,
 						'HK' => $parsed_data->pvp->totalHonorableKills
 					);
 					$this->Characters->create();

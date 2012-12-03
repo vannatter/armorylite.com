@@ -6,6 +6,8 @@
 /app/config/database.php
 /app/tmp
 /app/tmp/*
+/app/webroot/img/icons
+/app/webroot/img/icons/*
 /app/webroot/scripts/cache
 /app/webroot/scripts/cache/*
 /app/webroot/media

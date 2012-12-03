@@ -23,6 +23,17 @@
     		$i = $this->find('first', array('conditions' => array('Enchants.id' => $id)));
     		return $i;
     	}
+
+	    function updateEnchant($id, $enchant_id, $enchant_name) {
+    		$enchant = array(
+    			'id' => $id,
+    			'enchant_id' => $enchant_id,
+    			'name' => $enchant_name
+   			);
+			$this->save($enchant);		
+			return 1;
+    	}
+
     	    	
 	}
 ?>

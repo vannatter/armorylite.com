@@ -2,7 +2,7 @@
 	class ProfileHelper extends Helper {
 		
 		function gearSlot($short, $gear, $add_class="") {
-			
+
 			if (@$gear->id) {
 				echo "<div data-slot=\"" . $short . "\" class=\"slot slot_" . $gear->quality . " slot_color_" . $gear->quality . (($add_class!="") ? " " . $add_class . " " : "") . "\">";
             	echo "	<div style=\"display:none;\" class=\"slot_mnu\" id=\"mnu_" . $short . "\">";
@@ -123,6 +123,16 @@
 			}
 			return $s;
 		}
+		
+		function getActiveSpec($talents) {
+			$s = "";
+			foreach ($talents as $talent) {
+				if (@$talent->selected == "1") {
+					$s .= "<b>" . $talent->spec->name . "</b>";
+ 				}
+			}			
+			return $s;
+		}		
 		
 		function getActiveTalent($talents) {
 			$s = "";

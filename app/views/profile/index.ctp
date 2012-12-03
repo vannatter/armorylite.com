@@ -72,14 +72,14 @@
 					</div>
 				<? } ?>		
 				
-				<? if ( (count(@$d->companions)>0) || (count(@$d->mounts)>0) ) { ?>
+				<? if ( (count(@$d->pets->numCollected)>0) || (count(@$d->mounts->numCollected)>0) ) { ?>
 					<div class="sub3">
-						<? if (count(@$d->companions)>0) { ?>
-							Companions: <?= count(@$d->companions); ?>
+						<? if (count(@$d->pets->numCollected)>0) { ?>
+							Companions: <?= @$d->pets->numCollected; ?>
 						<? } ?>
-						<? if ( (count(@$d->companions)>0) && (count(@$d->mounts)>0) ) { ?> - <? } ?>
+						<? if ( (count(@$d->pets->numCollected)>0) && (count(@$d->mounts->numCollected)>0) ) { ?> - <? } ?>
 						<? if (count(@$d->mounts)>0) { ?>
-							Mounts: <?= count(@$d->mounts); ?>
+							Mounts: <?= @$d->mounts->numCollected; ?>
 						<? } ?>
 					</div>
 				<? } ?>		
@@ -90,7 +90,7 @@
 				<div id="gscore" class="sub6"><?= $d->items->averageItemLevelEquipped; ?></div>
 
 				<div class="sub_talent">
-					<?= $this->Profile->getActiveTalent($d->talents); ?>
+					<?= $this->Profile->getActiveSpec($d->talents); ?>
 				</div>
 
 				<div class="hpx">  
@@ -142,4 +142,3 @@
 			expandem(<?= $this->Profile->getExpander($d->class); ?>);
 		});
 	</script>
-
