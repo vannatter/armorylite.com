@@ -199,7 +199,7 @@
 						$this->render('achievements');
 						break;
 					case "t":
-						$talent_grid = $this->Profile->buildTalentTrees($parsed_data);
+						$talent_grid = $this->Profile->buildTalentGrid($parsed_data);
 						$this->set('grid', $talent_grid);
 						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Talents');
 						$this->render('talents');

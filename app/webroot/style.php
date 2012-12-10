@@ -2737,6 +2737,16 @@ I {
   	height: 340px;
   	overflow: hidden;
   } 
+  #talents .content .pane_new {
+  	clear: both;
+  	border: 1px dotted #444; 
+  	margin: 0px 0px 0px 3px;
+  	padding: 10px;
+  	background-color: <?=$color_62;?>;
+  	margin-top: -5px;
+  	min-height: 340px;
+  }   
+  
   #talents .content .row {
     clear: both;
   } 
@@ -2978,8 +2988,20 @@ I {
   	background-color: #151515;
   }
   
-  .glyphs .gl {
-    margin-bottom: 5px;
+  .gl_row {
+  	clear: both;
+  	overflow: hidden;
+    margin-bottom: 3px;
+  }
+  .gl {
+  	float: left;
+    overflow: hidden;
+    padding-top: 3px;
+  }
+  .gl_img {
+  	float: left;
+  	width: 18px;
+  	margin-right: 4px;
   }
   
   .glyphs .tx {
@@ -3184,6 +3206,54 @@ I {
 	clear: both;
 	margin: 10px 0px 10px 0px;
 }
+
+.row_new {
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.col_new {
+	float: left;
+	overflow: hidden;
+	width: 174px;
+	margin-right: 5px;
+	border: 1px solid #333;
+	min-height: 100px;
+	max-height: 100px;
+	padding: 5px;
+}
+
+.tal_icon {
+	float: left;
+	margin-right: 5px;
+	width: 36px;
+	margin-left: 0;
+	padding: 0;
+}
+.tal_info {
+	float: left;
+	overflow: hidden;
+	width: 132px;
+	text-align: left;
+}
+
+.tal_name {
+	font-size: 12px;
+}
+
+.tal_desc, .tal_castinfo {
+	font-size: 10px;
+}
+
+.tal_castinfo {
+	margin-bottom: 5px;
+}
+
+.tal_on {
+	border: 1px solid #FCD600 !important;
+}
+
 
 /* CAKE SQL LOG */
 #sql_log_frame_tab { padding: 3px 10px; background-color: #111; border: 1px solid #222; left: 10px; width: 100px; position: relative; cursor: pointer; text-align: center; color: #444; }

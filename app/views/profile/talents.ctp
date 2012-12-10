@@ -36,9 +36,11 @@
 		<div class="talent_tabs">
 		<?
 			if (is_array($d->talents)) {
+			
 				$tree_count = 0;
             	foreach ($d->talents as $talent_tree) {
-            		if (@$talent_tree->name) {
+            	
+            		if (@$talent_tree->spec->name) {
 	              		if (@$talent_tree->selected == "1") {
 	                		$is_active = "tabactive";
 	              		} else {
@@ -46,7 +48,7 @@
 	              		}
 						?>
 						<div id="talenttab_<?= $tree_count; ?>" class="swaptal <?= $is_active; ?>" data-gridid="<?= $tree_count; ?>">
-							<?= $talent_tree->name; ?>
+							<?= $talent_tree->spec->name; ?> (<?= $talent_tree->spec->role; ?>)
 						</div>
 						<?
 						$tree_count++;
@@ -59,84 +61,48 @@
 		<? 
 			$tree_count = 0;		
 		?>
+		
 		<? foreach ($grid as $t) { ?>
-			<div <?= (($t['info']['active'] == "1") ? "" : " style='display: none;' "); ?> class="content spec" id="grid_<?= $tree_count; ?>">
+			<? $row_count = 0; ?>
+			<div <?= (($t['info']['selected'] == "1") ? "" : " style='display: none;' "); ?> class="content spec" id="grid_<?= $tree_count; ?>">
 			
-				<? for ($p = 1; $p <= 3; $p++) { ?>
-                	<div id="s<?=$t['info']['spec_id'];?>_p<?=$p;?>" class="pane" style="background-image: url(<?= $t['pane_'.$p]['info']['background']; ?>);">
-                		<? for ($r = 1; $r <= 7; $r++) { ?>
-                			<div id="s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>" class="row">
-                				<? for ($c = 1; $c <= 4; $c++) { ?>
-                					<? 
-                						if (@$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent'] == "0") {
-											$fill = " empty_img ";
-											$fill_color = " empty_clr ";
-                						} elseif (@$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent'] == count(@$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'])) {
-											$fill = " full_img ";
-											$fill_color = " full_clr ";
-                						} else {
-											$fill = " half_img ";
-											$fill_color = " half_clr ";
-                						}
-                					?>
-                				
-                					<? if (count(@$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks']) > 0) { ?>
-                						<div id="s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>_c<?=$c;?>" class="talblock block">
-		                					<div id="ico_s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>_c<?=$c;?>" class="talico <?= $fill; ?> <?= ((@$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent'] == "0") ? " noton ":""); ?>" style="background-image: url(<?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][0]['Talents']['web_icon']; ?>);" >
-		                						<div class="talcnt <?= $fill_color; ?>"><?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']; ?></div>
-		                					</div>
-											<div style="display:none;" class="tal_mnu" id="mnu_s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>_c<?=$c;?>">
-												<div class="tmnu_name"><?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][0]['Talents']['name']; ?></div>											
-												<div class="tmnu_rank">Rank <?= @$t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']; ?>/<?= count(@$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks']); ?></div>
-												<div class="tmnu_desc"><?= str_replace("\n\n", "<br />", @$t['pane_'.$p]['row_'.$r]['col_'.$c]['ranks'][(($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']==0)?0:($t['pane_'.$p]['row_'.$r]['col_'.$c]['spent']-1))]['Talents']['tooltip']); ?></div>	
-											</div>	                					
+				<div class="pane_new">
+					<? foreach ($t as $row) { ?>
+						<? if (key($row) == "col_0") { ?>
+							<div class="row_new">
+								<? foreach ($row as $col) { ?>
+									<div class="col_new <?= (($col['selected'] == "1") ? " tal_on" : ""); ?>">
+										<div class="tal_icon"><a target="_new" href="http://www.wowhead.com/spell=<?= $col['spell_id']; ?>"><img src="<?= $col['spell_icon_img']; ?>" border="0" width="36" height="36" /></a></div>
+										<div class="tal_info">
+											<div class="tal_name"><a target="_new" href="http://www.wowhead.com/spell=<?= $col['spell_id']; ?>"><?= $col['spell_name']; ?></a></div>
+											<div class="tal_castinfo"><?= $col['spell_cast_time']; ?><?= (($col['spell_cooldown']) ? ", " . $col['spell_cooldown'] : ""); ?></div>
+											<div class="tal_desc"><?= $col['spell_description']; ?></div>
 										</div>
-	                				<? } else { ?>
-	                					<div id="s<?=$t['info']['spec_id'];?>_p<?=$p;?>_r<?=$r;?>_c<?=$c;?>" class="col_img"></div>
-	                				<? } ?>
-                					
-                				<? } ?>
-                			</div>
-                		<? } ?>
-                		
-	                  	<br><br><br>
-	                  	<div class="row sub3 alignleft tagit">
-	                    	<?= $t['pane_'.$p]['info']['name']; ?> (<?= $t['pane_'.$p]['info']['count']; ?>)
-	                  	</div>	
-                		
-                	</div>
-				<? } ?>
-				
-				<div class="glyph_grid">
-					<div class="glyphs_box">
-						<h3><?= __('Prime Glyphs'); ?></h3>
-
-						<? foreach($t['glyphs']->prime as $glyph) { ?>
-							<div class="gl"><a href="http://www.wowhead.com/?item=<?= $glyph->item;?>"><?= $glyph->name;?></a></div>
+									</div>
+								<? } ?>
+							</div>
 						<? } ?>
-					</div>
-					
+						<? $row_count++; ?>
+					<? } ?>										
+				</div>
+			
+				<div class="glyph_grid">
 					<div class="glyphs_box">
 						<h3><?= __('Major Glyphs'); ?></h3>
 
-						<? foreach($t['glyphs']->major as $glyph) { ?>
-							<div class="gl"><a href="http://www.wowhead.com/?item=<?= $glyph->item;?>"><?= $glyph->name;?></a></div>
+						<? foreach($t['glyphs']['major'] as $glyph) { ?>
+							<div class="gl_row"><div class="gl_img"><img src="<?= $glyph['icon_img'];?>" width="18" height="18" /></div><div class="gl"><a href="http://www.wowhead.com/?item=<?= $glyph['item_id'];?>"><?= $glyph['name'];?></a></div></div>
 						<? } ?>
 					</div>					
 					
 					<div class="glyphs_box">
 						<h3><?= __('Minor Glyphs'); ?></h3>
 
-						<? foreach($t['glyphs']->minor as $glyph) { ?>
-							<div class="gl"><a href="http://www.wowhead.com/?item=<?= $glyph->item;?>"><?= $glyph->name;?></a></div>
+						<? foreach($t['glyphs']['minor'] as $glyph) { ?>
+							<div class="gl_row"><div class="gl_img"><img src="<?= $glyph['icon_img'];?>" width="18" height="18" /></div><div class="gl"><a href="http://www.wowhead.com/?item=<?= $glyph['item_id'];?>"><?= $glyph['name'];?></a></div></div>
 						<? } ?>
 					</div>						
 				</div>
-				
-				<div class="export_calc">
-	                <a href="http://www.wowhead.com/talent#<?= $this->Profile->getTalentClass($d->class); ?>-<?= $t['info']['build']; ?>" target="_new"> Export to Calculator &gt;&gt;</a>
-				</div>
-              	
 			</div>
 			
 			<? 
@@ -154,5 +120,7 @@
       <?= $this->Common->show_ad("homepage","tall"); ?>      
     </div>
     
-
+	<div style='clear:both;'>
+	
+	</div>
     

@@ -54,13 +54,85 @@
     		return $final_grid;
 	    }
 	    
+	    
+	    function buildTalentGrid($data) {
+			if (!$this->__initClassesModel()) { }
+			if (!$this->__initClassTalentsModel()) { }
+			if (!$this->__initClassSpecsModel()) { }
+			if (!$this->__initClassGlyphsModel()) { }
+
+			$grid = array();
+			$class_info = $this->Classes->getByAPIID($data->class);
+			
+			if ($class_info['Classes']['Class_ID']) {
+				$our_class_id = $class_info['Classes']['Class_ID'];
+				$class_talents = $this->ClassTalents->getByClassID($our_class_id);
+				$class_specs = $this->ClassSpecs->getByClassID($our_class_id);
+
+				$raw_talents = array();
+				foreach ($class_talents as $class_talent) {
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['talent_id'] = $class_talent['ClassTalents']['id'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['class_id'] = $class_talent['ClassTalents']['class_id'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['tier'] = $class_talent['ClassTalents']['tier'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['column'] = $class_talent['ClassTalents']['column'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_id'] = $class_talent['ClassTalents']['spell_id'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_name'] = $class_talent['ClassTalents']['spell_name'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_icon'] = $class_talent['ClassTalents']['spell_icon'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_icon_img'] = $this->Curl->getIcon($class_talent['ClassTalents']['spell_icon']);
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_description'] = $class_talent['ClassTalents']['spell_description'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_cast_time'] = $class_talent['ClassTalents']['spell_cast_time'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['spell_cooldown'] = $class_talent['ClassTalents']['spell_cooldown'];
+					$raw_talents['row_'.$class_talent['ClassTalents']['tier']]['col_'.$class_talent['ClassTalents']['column']]['selected'] = 0;
+				}	
+									
+				foreach ($data->talents as $t) {
+					$spec = $t->spec->name;
+					$grid['spec_'.$spec] = $raw_talents;
+					$grid['spec_'.$spec]['spec'] = $t->spec;
+					$grid['spec_'.$spec]['info']['selected'] = ( (@$t->selected) ? @$t->selected : "0");
+					$grid['spec_'.$spec]['info']['calc_talent'] = $t->calcTalent;					
+					$grid['spec_'.$spec]['info']['calc_spec'] = $t->calcSpec;					
+					$grid['spec_'.$spec]['info']['calc_glyph'] = $t->calcGlyph;					
+
+					foreach ($t->talents as $selected_talent) {
+						$grid['spec_'.$spec]['row_'.$selected_talent->tier]['col_'.$selected_talent->column]['selected'] = 1;
+					}					
+					
+					foreach ($t->glyphs->major as $g) {
+						$glyph = array();
+						$glyph['glyph_id'] = $g->glyph;						
+						$glyph['item_id'] = $g->item;						
+						$glyph['name'] = $g->name;						
+						$glyph['icon'] = $g->icon;						
+						$glyph['icon_img'] = $this->Curl->getIcon($g->icon);
+						$grid['spec_'.$spec]['glyphs']['major'][] = $glyph;
+					}
+					
+					foreach ($t->glyphs->minor as $g) {
+						$glyph = array();
+						$glyph['glyph_id'] = $g->glyph;						
+						$glyph['item_id'] = $g->item;						
+						$glyph['name'] = $g->name;						
+						$glyph['icon'] = $g->icon;						
+						$glyph['icon_img'] = $this->Curl->getIcon($g->icon);
+						$grid['spec_'.$spec]['glyphs']['minor'][] = $glyph;
+					}					
+					
+				}
+				
+				
+			}
+			
+			return $grid;
+	    }
+	    
 	    function buildTalentTrees($data) {
 			if (!$this->__initTalentsModel()) { }
 			if (!$this->__initTalentTreesModel()) { }
 			
 			$grid = array();
-			$max_cols = 4;
-			$max_rows = 7;
+			$max_cols = 3;
+			$max_rows = 5;
 			$talent_data = $this->Talents->getTalentsByClass($data->class);
 			
 			if (is_array($data->talents)) {
@@ -341,6 +413,42 @@
       		return false;
     	} 	
 
+		function __initClassTalentsModel(){
+      		$this->ClassTalents = ClassRegistry::init('ClassTalents');
+      		if (isset($this->ClassTalents)) {
+        		$this->ClassTalents->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	} 
+
+		function __initClassSpecsModel(){
+      		$this->ClassSpecs = ClassRegistry::init('ClassSpecs');
+      		if (isset($this->ClassSpecs)) {
+        		$this->ClassSpecs->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	} 
+    	
+		function __initClassGlyphsModel(){
+      		$this->ClassGlyphs = ClassRegistry::init('ClassGlyphs');
+      		if (isset($this->ClassGlyphs)) {
+        		$this->ClassGlyphs->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	} 
+
+		function __initClassesModel(){
+      		$this->Classes = ClassRegistry::init('Classes');
+      		if (isset($this->Classes)) {
+        		$this->Classes->recursive = -1;
+        		return true;
+      		}
+      		return false;
+    	} 
+    	    	
 		function __initTalentsModel(){
       		$this->Talents = ClassRegistry::init('Talents');
       		if (isset($this->Talents)) {
