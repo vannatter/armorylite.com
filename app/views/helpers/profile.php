@@ -383,6 +383,9 @@
 				case 9:
 					$s = "'spell', 'base'";
 					break;
+				case 10:
+					$s = "'spell', 'base'";
+					break;
 				case 11:
 					$s = "'spell', 'base'";
 					break;
