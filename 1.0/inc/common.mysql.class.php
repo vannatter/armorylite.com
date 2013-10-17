@@ -9,18 +9,18 @@
     var $appvalues = array (
                             "armorylite_dev" => array("hostname" => "localhost",
                                               "dbname"   => "armorylite",
-                                              "username" => "root",
-                                              "password" => "icetea"),
+                                              "username" => "*****",
+                                              "password" => "*****"),
     
                             "armorylite" => array("hostname" => "localhost",
                                               "dbname"   => "armorylite",
-                                              "username" => "root",
-                                              "password" => "icetea"),
+                                              "username" => "*****",
+                                              "password" => "*****"),
                                               
                             "tracker" => array("hostname" => "localhost",
                                               "dbname"   => "tracker",
-                                              "username" => "tracker",
-                                              "password" => "tr@ck3r")                                                                                               
+                                              "username" => "*****",
+                                              "password" => "*****")                                                                                               
                            );
     var $persistent = false;
     var $serverconn;
