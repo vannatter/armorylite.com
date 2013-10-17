@@ -231,6 +231,10 @@
 			if ($info['http_code'] == 200) {
 				$parsed_data = json_decode($data);
 				
+				echo "<!-- ";
+				print_r($parsed_data);
+				echo " --> ";
+				
 				if ($character['Characters']['Character_ID']) {
 					$char = array(
 						'Character_ID' => $character['Characters']['Character_ID'],
