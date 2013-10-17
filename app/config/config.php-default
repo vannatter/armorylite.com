@@ -7,10 +7,10 @@
       		'noreply' => 'noreply@armorylite.com'
     	),
     	'API' => array(
-    		'public' => '87FLVUJGL1NJ',
-    		'private' => 'ANLD58MWAAMK'
+    		'public' => '*****',
+    		'private' => '*****'
     	),
-    	'icon_path' => '/Users/dustinvannatter/Dropbox/Workspace/armorylite.com/app/webroot/img/icons/',
+    	'icon_path' => '/path/armorylite.com/app/webroot/img/icons/',
     	'icon_web_path' => '/img/icons/'
   	);
 ?>
