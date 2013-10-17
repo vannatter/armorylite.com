@@ -6,8 +6,8 @@ class DATABASE_CONFIG {
                 'driver' => 'mysql',
                 'persistent' => false,
                 'host' => 'localhost',
-                'login' => 'root',
-                'password' => 'icetea',
+                'login' => '****',
+                'password' => '****',
                 'database' => 'armorylite',
                 'prefix' => '',
         );
@@ -16,8 +16,8 @@ class DATABASE_CONFIG {
                 'driver' => 'mysql',
                 'persistent' => false,
                 'host' => 'localhost',
-                'login' => 'root',
-                'password' => 'icetea',
+                'login' => '****',
+                'password' => '****',
                 'database' => 'conflct',
                 'prefix' => '',
         );
