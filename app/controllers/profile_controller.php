@@ -231,10 +231,6 @@
 			if ($info['http_code'] == 200) {
 				$parsed_data = json_decode($data);
 				
-				echo "<!-- ";
-				print_r($parsed_data);
-				echo " --> ";
-				
 				if ($character['Characters']['Character_ID']) {
 					$char = array(
 						'Character_ID' => $character['Characters']['Character_ID'],
@@ -256,7 +252,7 @@
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
 						'RESIL' => $parsed_data->stats->pvpResilienceRating,
-						'HK' => $parsed_data->pvp->totalHonorableKills
+						'HK' => $parsed_data->totalHonorableKills
 					);
 					
 					$this->Characters->save($char);
@@ -286,7 +282,7 @@
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
 						'RESIL' => $parsed_data->stats->pvpResilienceRating,
-						'HK' => $parsed_data->pvp->totalHonorableKills
+						'HK' => $parsed_data->totalHonorableKills
 					);
 					$this->Characters->create();
 					$this->Characters->save($char);					
