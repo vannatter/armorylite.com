@@ -15,14 +15,18 @@
 			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);			
 			
   			$f = curl_exec($curl);
-  			
-  			echo $f;
-  			exit;
-  			
 			$i = curl_getinfo($curl);
   			
-  			curl_close($curl);	
+  			echo "<pre style='background-color:red'>";
+  			echo $f;
+  			echo "</pre>";
 
+  			echo "<pre style='background-color:lime'>";
+  			echo $i;
+  			echo "</pre>";
+  			exit;
+  			
+  			curl_close($curl);	
   			return array($f, $i);
 		}
 		
