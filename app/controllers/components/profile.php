@@ -236,17 +236,22 @@
 						$main_item = $this->Items->addItem($item_data_parsed->id, $item_data_parsed->name, $item_data_parsed->quality, $item_data_parsed->itemLevel, $item_data_parsed->icon, -1);
 						
 						// now get the item_stats .. 
+/*
 						$url = $this->Curl->getBNETprefix("us") . "/api/wow/item/" . $main_item['Items']['Item_ID'];
 						list ($is_d, $is_i) = $this->Curl->getBNET($url);
 						if ($is_i['http_code'] == 200) {
 							$is_parsed_data = json_decode($is_d);
+*/
 
-							if (@count($is_parsed_data->bonusStats) > 0) {
-								foreach ($is_parsed_data->bonusStats as $bonus) {
+							if (@count($item_data_parsed->bonusStats) > 0) {
+								foreach ($item_data_parsed->bonusStats as $bonus) {
 									$ret = $this->ItemStats->addItemStat($main_item['Items']['Item_Index_ID'], $bonus->stat, $bonus->amount);								
-								}								
+								}				
 							}
-						}	
+							
+							
+/* 						}	 */
+						
 					}
 					
 				}
