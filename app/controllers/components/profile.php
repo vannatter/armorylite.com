@@ -216,14 +216,27 @@
 			if (@$data->$obj) {
 				$main_item = $this->Items->getItem($data->$obj->id);
 				if (!$main_item['Items']['Item_Index_ID']) {
+
+					$url = $this->Curl->getBNETprefix("us") . "/api/wow/item/" . $data->$obj->id;
+					list ($is_d, $is_i) = $this->Curl->getBNET($url);
+
+					$item_data_parsed = json_decode($is_d);
+
+					echo "<pre>";
+					print_r($item_data_parsed);
+					echo "</pre>";					
+					
+/*
 					$wowhead_url = "http://www.wowhead.com/item=" . $data->$obj->id . "&xml";
 					echo "<!-- " . $wowhead_url . " --> \n";
 					
 					list ($x, $i) = $this->Curl->getRAW($wowhead_url);
 	    			$parsed_xml = & new XML($x);
 					$parsed_xml = Set::reverse($parsed_xml);				
-	
-					if ($parsed_xml['Wowhead']['Item']['id']) {
+*/
+
+
+					if (@$parsed_xml['Wowhead']['Item']['id']) {
 						$main_item = $this->Items->addItem($parsed_xml['Wowhead']['Item']['id'], $parsed_xml['Wowhead']['Item']['name'], $parsed_xml['Wowhead']['Item']['quality']['id'], $parsed_xml['Wowhead']['Item']['level'], $parsed_xml['Wowhead']['Item']['icon']['value'], ((@$parsed_xml['Wowhead']['Item']['inventorySlot']['id']) ? $parsed_xml['Wowhead']['Item']['inventorySlot']['id'] : $parsed_xml['Wowhead']['Item']['InventorySlot']['id']));
 						
 						// now get the item_stats .. 
@@ -238,8 +251,8 @@
 								}								
 							}
 						}	
-								
 					}
+					
 				}
 				$data->$obj->ilvl = $main_item['Items']['Item_iLevel'];
 				
