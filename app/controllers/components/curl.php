@@ -22,7 +22,7 @@
   			echo "</pre>";
 
   			echo "<pre style='background-color:lime'>";
-  			echo $i;
+  			print_r($i);
   			echo "</pre>";
   			exit;
   			
