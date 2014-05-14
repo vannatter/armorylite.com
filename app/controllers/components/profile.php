@@ -220,12 +220,8 @@
 					echo "<!-- " . $wowhead_url . " --> \n";
 					
 					list ($x, $i) = $this->Curl->getRAW($wowhead_url);
-					$parsed_xml = new SimpleXMLElement($x);
-					
-/*
 	    			$parsed_xml = & new XML($x);
 					$parsed_xml = Set::reverse($parsed_xml);				
-*/
 	
 					echo "<pre>";
 					print_r($parsed_xml);
