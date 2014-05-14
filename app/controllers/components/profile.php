@@ -216,7 +216,10 @@
 			if (@$data->$obj) {
 				$main_item = $this->Items->getItem($data->$obj->id);
 				if (!$main_item['Items']['Item_Index_ID']) {
-					list ($x, $i) = $this->Curl->getRAW("http://www.wowhead.com/item=" . $data->$obj->id . "&xml");
+					$wowhead_url = "http://www.wowhead.com/item=" . $data->$obj->id . "&xml";
+					echo "<!-- " . $wowhead_url . " --> \n";
+					
+					list ($x, $i) = $this->Curl->getRAW($wowhead_url);
 	    			$parsed_xml = & new XML($x);
 					$parsed_xml = Set::reverse($parsed_xml);				
 	
