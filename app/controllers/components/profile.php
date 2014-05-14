@@ -224,7 +224,7 @@
 					$parsed_xml = Set::reverse($parsed_xml);				
 	
 					echo "<pre>";
-					print_r($parsed_xml);
+					print_r($x);
 					echo "</pre>";
 					
 	
