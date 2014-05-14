@@ -220,7 +220,7 @@
 					echo "<!-- " . $wowhead_url . " --> \n";
 					
 					list ($x, $i) = $this->Curl->getRAW($wowhead_url);
-					$parsed_xml = new SimpleXMLElement($xmlstr);
+					$parsed_xml = new SimpleXMLElement($x);
 					
 /*
 	    			$parsed_xml = & new XML($x);
