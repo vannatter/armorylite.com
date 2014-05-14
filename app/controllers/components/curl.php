@@ -2,6 +2,9 @@
 	class CurlComponent extends Object {
 	  
 		function getRAW($url) {
+		
+			echo "getting " . $url . " ... <br/>";
+		
 			$curl = curl_init();
       
 			curl_setopt($curl, CURLOPT_URL, $url);

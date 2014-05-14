@@ -223,11 +223,6 @@
 	    			$parsed_xml = & new XML($x);
 					$parsed_xml = Set::reverse($parsed_xml);				
 	
-					echo "<pre>";
-					print_r($x);
-					echo "</pre>";
-					
-	
 					if ($parsed_xml['Wowhead']['Item']['id']) {
 						$main_item = $this->Items->addItem($parsed_xml['Wowhead']['Item']['id'], $parsed_xml['Wowhead']['Item']['name'], $parsed_xml['Wowhead']['Item']['quality']['id'], $parsed_xml['Wowhead']['Item']['level'], $parsed_xml['Wowhead']['Item']['icon']['value'], ((@$parsed_xml['Wowhead']['Item']['inventorySlot']['id']) ? $parsed_xml['Wowhead']['Item']['inventorySlot']['id'] : $parsed_xml['Wowhead']['Item']['InventorySlot']['id']));
 						
