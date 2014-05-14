@@ -12,6 +12,10 @@
 			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);			
 			
   			$f = curl_exec($curl);
+  			
+  			echo $f;
+  			exit;
+  			
 			$i = curl_getinfo($curl);
   			
   			curl_close($curl);	
