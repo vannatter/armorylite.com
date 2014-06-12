@@ -285,8 +285,6 @@
 						'HK' => $parsed_data->totalHonorableKills
 					);
 					
-					echo "<!-- " . print_r($char) . " --> \n\n";
-					
 					$this->Characters->create();
 					$this->Characters->save($char);					
 					$char_id = $this->Characters->id;
