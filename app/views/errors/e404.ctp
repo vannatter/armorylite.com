@@ -8,6 +8,4 @@
 	Woops, we can't find that. If you need help, contact <a href="mailto:support@armorylite.com">support</a>.
 	<p/>
 
-	<?php print_r($info); ?>
-	
 </div>
