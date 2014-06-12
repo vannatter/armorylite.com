@@ -1,5 +1,1 @@
 User-agent: *
-Disallow: /cn
-Disallow: /us
-Disallow: /eu
-Disallow: /tw
