@@ -225,7 +225,7 @@
 		
 		function _parseCharacter($region, $realm, $toon, $settings) {
 			$character = $this->Characters->getByPath($region, $realm, $toon);
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
 			list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
 			
 			echo "<pre>";
