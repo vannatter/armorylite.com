@@ -228,6 +228,16 @@
 			$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
 			list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
 			
+			echo "<pre>";
+			print_r($data);
+			echo "</pre>";
+			
+			echo "<pre>";
+			print_r($info);
+			echo "</pre>";
+			
+			exit;
+			
 			if ($info['http_code'] == 200) {
 				$parsed_data = json_decode($data);
 				
