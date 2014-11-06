@@ -158,31 +158,31 @@
 			
 			switch ($region) {
 				case "us":
-					$url = "http://us.api.battle.net";
+					$url = "https://us.api.battle.net";
 					break;
 
 				case "eu":
-					$url = "http://eu.api.battle.net";
+					$url = "https://eu.api.battle.net";
 					break;
 					
 				case "kr":
-					$url = "http://kr.api.battle.net";
+					$url = "https://kr.api.battle.net";
 					break;
 					
 				case "tw":
-					$url = "http://tw.api.battle.net";
+					$url = "https://tw.api.battle.net";
 					break;
 
 				case "sea":
-					$url = "http://sea.api.battle.net";
+					$url = "https://sea.api.battle.net";
 					break;
 
 				case "cn":
-					$url = "http://battlenet.com.cn";
+					$url = "https://battlenet.com.cn";
 					break;
 					
 				default:
-					$url = "http://us.api.battle.net";
+					$url = "https://us.api.battle.net";
 					break;
 			}
 			
