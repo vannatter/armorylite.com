@@ -7,8 +7,7 @@
       		'noreply' => 'noreply@armorylite.com'
     	),
     	'API' => array(
-    		'public' => '*****',
-    		'private' => '*****'
+	    	'web' => ''
     	),
     	'icon_path' => '/path/armorylite.com/app/webroot/img/icons/',
     	'icon_web_path' => '/img/icons/'

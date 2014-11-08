@@ -18,11 +18,6 @@
 			<td class="stats_item stats_lbl"><?= __('Crit Rating'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->spellCritRating; ?></td>
 			<td class="stats_item stats_lbl"><?= __('Crit %'); ?>:</td><td class="stats_item stats_val"><?= round($d->stats->spellCrit,2); ?></td>
 		</tr>		
-		
-		<tr class="stats_item">
-			<td class="stats_item stats_lbl"><?= __('Hit Rating'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->spellHitRating; ?></td>
-			<td class="stats_item stats_lbl"><?= __('Hit %'); ?>:</td><td class="stats_item stats_val"><?= round($d->stats->spellHitPercent,2); ?></td>
-		</tr>		
 	</table>
 	<br/>
 

@@ -17,11 +17,6 @@
 		</tr>		
 		
 		<tr class="stats_item">
-			<td class="stats_item stats_lbl"><?= __('Hit Rating'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->rangedHitRating; ?></td>
-			<td class="stats_item stats_lbl"><?= __('Hit %'); ?>:</td><td class="stats_item stats_val"><?= round($d->stats->rangedHitPercent,2); ?></td>
-		</tr>		
-		
-		<tr class="stats_item">
 			<td class="stats_item stats_lbl"><?= __('Ranged AP'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->rangedAttackPower; ?></td>
 		</tr>		
 		
