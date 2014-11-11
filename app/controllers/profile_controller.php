@@ -269,7 +269,7 @@
 						'Level' => $parsed_data->level,
 						'Class' => $parsed_data->class,
 						'Race' => $parsed_data->race,
-						'Guild' => $parsed_data->guild->name,
+						'Guild' => ((isset($parsed_data->guild->name)) ? $parsed_data->guild->name : ""),
 						'ACHPTS' => $parsed_data->achievementPoints,
 						'HP' => $parsed_data->stats->health,
 						'MP' => $parsed_data->stats->power,

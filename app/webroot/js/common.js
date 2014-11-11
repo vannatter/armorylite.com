@@ -1,7 +1,18 @@
 $(document).ready(function() {
 	
 	var _sql_log_height = parseInt($("#sql_log_frame").height());
+
+	setInterval(function() {
+		getmax();
+	}, 5000);
 	
+	function getmax() {
+		if ($('#pcount').length > 0) {
+			$('#pcount').load('/home/ajax_getmax');
+		}
+	}
+	getmax();	
+
 	$(".defaultText").focus(function(srcc) {
         if ($(this).val() == $(this)[0].title) {
 	        $(this).removeClass("defaultTextActive");
