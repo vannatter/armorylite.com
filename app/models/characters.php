@@ -29,6 +29,9 @@
       		return $this->find('count', array('conditions' => array('Characters.Region' => $region)));
     	}    	    
     	
+    	function getMax() {
+	    	return $this->find('first', array('fields' => array('MAX(Characters.Character_ID) as max_character')));
+    	}
     	
 	}
 ?>
