@@ -346,6 +346,9 @@
 				case 9:
 					$s = "Warlock";
 					break;
+				case 10:
+					$s = "Monk";
+					break;
 				case 11:
 					$s = "Druid";
 					break;
