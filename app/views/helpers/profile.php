@@ -232,6 +232,16 @@
 				case 22:
 					$s = "Worgen";
 					break;
+				case 24:
+					$s = "Pandaren";
+					break;
+				case 25:
+					$s = "Pandaren";
+					break;
+				case 26:
+					$s = "Pandaren";
+					break;
+
 			}
 			return $s;			
 		}
@@ -275,6 +285,15 @@
 				case 22:
 					$s = "Alliance";
 					break;
+				case 24:
+					$s = "Neutral";
+					break;
+				case 25:
+					$s = "Alliance";
+					break;
+				case 26:
+					$s = "Horde";
+					break;
 			}
 			return $s;		
 		}		
@@ -308,6 +327,9 @@
 					break;
 				case 9:
 					$s = "warlock";
+					break;
+				case 10:
+					$s = "monk";
 					break;
 				case 11:
 					$s = "druid";
