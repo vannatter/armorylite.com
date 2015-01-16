@@ -6,7 +6,6 @@
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
-    	
     	function anon($anon_id, $page="m", $extra_id="") {
     		
     		$character_id = $this->Anons->getCharacter($anon_id);
@@ -225,7 +224,7 @@
 		
 		function _parseCharacter($region, $realm, $toon, $settings) {
 			$character = $this->Characters->getByPath($region, $realm, $toon);
-			$url = $this->Curl->getBNETprefix($region) . "/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets&rand=" . $this->rand_str(10);
 			list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
 			
 			if ($info['http_code'] == 200) {
@@ -251,7 +250,7 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->pvpResilienceRating,
+						'RESIL' => 0,
 						'HK' => $parsed_data->totalHonorableKills
 					);
 					
@@ -281,7 +280,7 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->pvpResilienceRating,
+						'RESIL' => 0,
 						'HK' => $parsed_data->totalHonorableKills
 					);
 					

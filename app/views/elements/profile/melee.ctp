@@ -19,7 +19,6 @@
 		
 		<tr class="stats_item">
 			<td class="stats_item stats_lbl"><?= __('AP'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->attackPower; ?></td>
-			<td class="stats_item stats_lbl"><?= __('Expertise'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->expertiseRating; ?></td>
 		</tr>		
 		
 		<tr class="stats_item">

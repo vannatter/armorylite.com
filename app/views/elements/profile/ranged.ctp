@@ -12,11 +12,6 @@
 		<? } ?>
 		
 		<tr class="stats_item">
-			<td class="stats_item stats_lbl"><?= __('Crit Rating'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->rangedCritRating; ?></td>
-			<td class="stats_item stats_lbl"><?= __('Crit %'); ?>:</td><td class="stats_item stats_val"><?= round($d->stats->rangedCrit,2); ?></td>
-		</tr>		
-		
-		<tr class="stats_item">
 			<td class="stats_item stats_lbl"><?= __('Ranged AP'); ?>:</td><td class="stats_item stats_val"><?= $d->stats->rangedAttackPower; ?></td>
 		</tr>		
 		
