@@ -79,6 +79,9 @@
 			$realm = $this->scrubRealm($realm);
 			$toon = $this->scrubToon($toon);
 			
+			echo "toon - " . $toon;
+			exit;
+			
 			$settings = new StdClass();
 			$settings->page = $page;
 			$settings->is_archive = false;
