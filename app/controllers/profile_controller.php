@@ -6,7 +6,6 @@
 		var $components = array('Curl', 'Profile');
     	var $helpers = array('Profile');
     	
-    	
     	function anon($anon_id, $page="m", $extra_id="") {
     		
     		$character_id = $this->Anons->getCharacter($anon_id);
@@ -61,7 +60,7 @@
 						default:
 							$this->set('title_for_layout', 'Anonymous of Unknown (' . strtoupper($region) . ')');
 							$this->render('index');					
-							break;					
+							break;
 					}					
 
     			} else {
@@ -228,7 +227,7 @@
 		
 		function _parseCharacter($region, $realm, $toon, $settings) {
 			$character = $this->Characters->getByPath($region, $realm, $toon);
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets&rand=" . $this->rand_str(10);
 			list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);
 			
 			if ($info['http_code'] == 200) {
@@ -254,7 +253,7 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->pvpResilienceRating,
+						'RESIL' => 0,
 						'HK' => $parsed_data->totalHonorableKills
 					);
 					
@@ -272,7 +271,7 @@
 						'Level' => $parsed_data->level,
 						'Class' => $parsed_data->class,
 						'Race' => $parsed_data->race,
-						'Guild' => $parsed_data->guild->name,
+						'Guild' => ((isset($parsed_data->guild->name)) ? $parsed_data->guild->name : ""),
 						'ACHPTS' => $parsed_data->achievementPoints,
 						'HP' => $parsed_data->stats->health,
 						'MP' => $parsed_data->stats->power,
@@ -284,7 +283,7 @@
 						'SPI' => $parsed_data->stats->spr,
 						'SPDMG' => $parsed_data->stats->spellPower,
 						'AP' => $parsed_data->stats->attackPower,
-						'RESIL' => $parsed_data->stats->pvpResilienceRating,
+						'RESIL' => 0,
 						'HK' => $parsed_data->totalHonorableKills
 					);
 					

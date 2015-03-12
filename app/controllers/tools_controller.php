@@ -13,7 +13,7 @@
 		}
 		
 		function getCharacterRaces($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/character/races";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/races";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -23,7 +23,7 @@
 		}
 		
 		function getCharacterClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/character/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes";
 			list ($d, $i) = $this->Curl->getBNET($url);
 
 			echo "<pre>";
@@ -33,7 +33,7 @@
 		}		
 		
 		function getItemClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/item/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/item/classes";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -43,7 +43,7 @@
 		}
 
 		function getTalents($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/talents";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -53,7 +53,7 @@
 		}
 
 		function updateCharacterClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/character/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes";
 			list ($d, $i) = $this->Curl->getBNET($url);
 
 			$classes = json_decode($d);
@@ -79,7 +79,7 @@
 		
 		
 		function updateTalents($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/data/talents";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			$talents = json_decode($d);
 			
@@ -156,7 +156,7 @@
 		}
 		
 		function getItem($item_id, $region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/item/" . $item_id;
+			$url = $this->Curl->getBNETprefix($region) . "/wow/item/" . $item_id;
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -181,7 +181,7 @@
 		}
 		
 		function getServers($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/api/wow/realm/status";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/realm/status";
 			
 			if ($region == "cn") {
 				$url = "http://www.battlenet.com.cn/api/wow/realm/status?rhtml=y";

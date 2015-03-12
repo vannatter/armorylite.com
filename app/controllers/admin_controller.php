@@ -2,7 +2,7 @@
 
 	class AdminController extends AppController {
 		var $name = 'Admin';
-		var $uses = array('Servers', 'Users', 'Blog');
+		var $uses = array('Servers', 'Users', 'Blog', 'Enchants');
 		
 	    function beforeFilter() {
       		parent::beforeFilter();
@@ -18,16 +18,15 @@
 
 				$this->Blog->create();
 				if ($this->Blog->save($this->data)) {
-	      			$this->Session->setFlash(__('Blog entry added successfully!', true), 'flash_pos');
+					$this->Session->setFlash(__('Blog entry added successfully!', true), 'flash_pos');
 					$this->redirect("/admin?".$this->rand_str(10));    			
 					exit;					
 				} else {
-	      			$this->Session->setFlash(__('Blog entry not added successfully, try again.', true), 'flash_neg');
+					$this->Session->setFlash(__('Blog entry not added successfully, try again.', true), 'flash_neg');
 					$this->redirect("/admin?".$this->rand_str(10));    			
 					exit;					
 				}
 			}
-			
 		}
 		
 		function login() {

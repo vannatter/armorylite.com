@@ -20,7 +20,10 @@
 		}
 		
 		function getBNET($url, $last_time_accessed=0) {
-		
+			
+			// add api info to end..
+			$url .= "&locale=en_US&apikey=" . Configure::read('Settings.API.web');
+			
 			$url_parts = parse_url($url);
 			$curl = curl_init();
       
@@ -33,29 +36,20 @@
 			date_default_timezone_set('GMT');
 			$request_date = date(DATE_RFC2822);
 			
-			$StringToSign = "GET" . "\n" . $request_date . "\n" . $url_parts['path'] . "\n";
-			
-			$private_key = Configure::read('Settings.API.private');
-			$public_key = Configure::read('Settings.API.public');
-			
-			$signature = base64_encode(hash_hmac('sha1', $StringToSign, $private_key, true));
-			$authorization = "BNET" . " " . $public_key . ":" . $signature;
-			
 			if ($last_time_accessed > 0) {
 				curl_setopt($curl, CURLOPT_TIMECONDITION, CURL_TIMECOND_IFMODSINCE);
 				curl_setopt($curl, CURLOPT_TIMEVALUE, $last_time_accessed);
 			}
 
 			$header = array (
-				"Date: " . $request_date,
-				"Authorization: " . $authorization
+				"Date: " . $request_date
 			); 
 			curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 			
   			$f = curl_exec($curl);
 			$i = curl_getinfo($curl);
   			curl_close($curl);
-  			
+
   			return array($f, $i);
 		}
 		
@@ -158,27 +152,31 @@
 			
 			switch ($region) {
 				case "us":
-					$url = "http://us.battle.net";
+					$url = "https://us.api.battle.net";
 					break;
 
 				case "eu":
-					$url = "http://eu.battle.net";
+					$url = "https://eu.api.battle.net";
 					break;
 					
 				case "kr":
-					$url = "http://kr.battle.net";
+					$url = "https://kr.api.battle.net";
 					break;
 					
 				case "tw":
-					$url = "http://tw.battle.net";
+					$url = "https://tw.api.battle.net";
+					break;
+
+				case "sea":
+					$url = "https://sea.api.battle.net";
 					break;
 
 				case "cn":
-					$url = "http://battlenet.com.cn";
+					$url = "https://battlenet.com.cn";
 					break;
 					
 				default:
-					$url = "http://us.battle.net";
+					$url = "https://us.api.battle.net";
 					break;
 			}
 			
