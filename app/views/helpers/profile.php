@@ -1,7 +1,7 @@
 <?
 	class ProfileHelper extends Helper {
 		
-		function gearSlot($short, $gear, $add_class="") {
+		function gearSlot($short, $gear, $add_class="", $short_lbl="") {
 
 			if (@$gear->id) {
 				echo "<div data-slot=\"" . $short . "\" class=\"slot slot_" . $gear->quality . " slot_color_" . $gear->quality . (($add_class!="") ? " " . $add_class . " " : "") . "\">";
@@ -47,7 +47,7 @@
             	echo "	</div>";
             	
 		        if (@$_COOKIE["armorylite_img"] == "n") {
-		        	echo $short;
+		        	echo ($short_lbl) ? $short_lbl : $short;
 		        } else {
 		          	echo "<img src=\"" . $gear->icon_path . "\" width=\"36\" height=\"36\" border=\"0\">";
 		        }		
@@ -55,7 +55,7 @@
 				echo "</div>";
 			} else {
 				echo "<div data-slot=\"" . $short . "\" class=\"slot slot_0 slot_color_0" . (($add_class!="") ? " " . $add_class . " " : "") . "\">";
-		        echo $short;
+	        	echo ($short_lbl) ? $short_lbl : $short;
 				echo "</div>";
 			}
 			
@@ -378,41 +378,42 @@
 			return $s;			
 		}		
 		
-		function getExpander($class) {
+		function getExpander($class, $multi="") {
 			$s = "";
+			
 			switch ($class) {
 				case 1:
-					$s = "'melee', 'base'";
+					$s = "'melee" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 2:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 3:
-					$s = "'ranged', 'base'";
+					$s = "'ranged" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 4:
-					$s = "'melee', 'base'";
+					$s = "'melee" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 5:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 6:
-					$s = "'melee', 'base'";
+					$s = "'melee" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 7:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 8:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 9:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 10:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 				case 11:
-					$s = "'spell', 'base'";
+					$s = "'spell" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "', 'base" . (($multi) ? "[data-multi_id=\"" . $multi . "\"]" : "") . "'";
 					break;
 			}
 			return $s;			

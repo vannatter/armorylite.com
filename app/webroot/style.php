@@ -1392,6 +1392,7 @@ I {
 	margin-top: 2px;
 }
 
+
 #navigation .my_on {
   float: left;
   width: 60px;
@@ -1443,6 +1444,13 @@ I {
   color: <?=$color_15;?>; 
   display: block;
   z-index: 300;
+}
+
+.navigation_multi .my_on {
+  border-top: 1px dotted <?=$color_11;?> !important;
+}
+.navigation_multi .my_off {
+  border-top: 1px dotted <?=$color_15;?> !important;
 }
 
 #nav_my {
@@ -1556,12 +1564,20 @@ I {
   display: block;
 }
 
+.navigation_multi .box_on {
+  border-top: 1px dotted <?=$color_11;?> !important;
+}
+.navigation_multi .box_off {
+  border-top: 1px dotted <?=$color_15;?> !important;
+}
+
 /***************************************************************************************/
 .armorylite {
   margin-left: auto; 
   margin-right: auto; 
   width: 750px;
   min-height: 100%;
+  overflow: hidden;
 }
 
 .armorylite_wide {
@@ -1569,6 +1585,7 @@ I {
   margin-right: auto; 
   min-height: 100%;
   width: 900px;
+  overflow: hidden;
 }
 
 #profile_wide {
@@ -1576,6 +1593,7 @@ I {
   margin: 0px;
   padding: 0px;
   clear: both;
+  overflow: hidden;
 }
 
 #profile {
@@ -1583,7 +1601,13 @@ I {
   margin: 0px;
   padding: 0px;
   clear: both; 
+  overflow: hidden;
 }
+
+.profile_multi {
+	margin-bottom: 30px !important;
+}
+
 
 #char_bot {
   margin-left: auto; 

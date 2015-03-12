@@ -1,7 +1,7 @@
 
 <div id="stats_ranged" class="stats stat_block">
-<div id="stats_head_ranged" class="stats_head_off stats_toggle" data-statname="ranged"><?= __('Ranged Statistics'); ?></div>
-<div style="display: none;" id="stats_main_ranged" class="stats_main"><center>
+<div id="stats_head_ranged" class="stats_head_ranged stats_head_off stats_toggle" data-statname="ranged" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><?= __('Ranged Statistics'); ?></div>
+<div style="display: none;" id="stats_main_ranged" class="stats_main_ranged stats_main" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><center>
 
 	<table width="380" border="0" cellpadding="0" cellspacing="0" class="stats_item stat_table">
 		<? if ($d->stats->rangedDmgMin >= 0) { ?>

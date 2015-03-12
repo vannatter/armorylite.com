@@ -1,7 +1,7 @@
 
 <div id="stats_arena" class="stats stat_block">
-<div id="stats_head_arena" class="stats_head_off stats_toggle" data-statname="arena"><?= __('Arena and Battleground Statistics'); ?></div>
-<div style="display: none;" id="stats_main_arena" class="stats_main"><center>
+<div id="stats_head_arena" class="stats_head_arena stats_head_off stats_toggle" data-statname="arena" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><?= __('Arena and Battleground Statistics'); ?></div>
+<div style="display: none;" id="stats_main_arena" class="stats_main_arena stats_main" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><center>
 
 		<? if (count(@$d->pvp->ratedBattlegrounds->battlegrounds)>0) { ?>
 			<table width="380" border="0" cellpadding="0" cellspacing="0" class="stat_table">

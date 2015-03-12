@@ -1,7 +1,7 @@
 
 <div id="stats_melee" class="stats stat_block">
-<div id="stats_head_melee" class="stats_head_off stats_toggle" data-statname="melee"><?= __('Melee Statistics'); ?></div>
-<div style="display: none;" id="stats_main_melee" class="stats_main"><center>
+<div id="stats_head_melee" class="stats_head_melee stats_head_off stats_toggle" data-statname="melee" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><?= __('Melee Statistics'); ?></div>
+<div style="display: none;" id="stats_main_melee" class="stats_main_melee stats_main" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><center>
 
 
 	<table width="380" border="0" cellpadding="0" cellspacing="0" class="stats_item stat_table">

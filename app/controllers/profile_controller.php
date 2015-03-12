@@ -78,9 +78,6 @@
 			$realm = $this->scrubRealm($realm);
 			$toon = $this->scrubToon($toon);
 			
-			echo "toon - " . $toon;
-			exit;
-			
 			$settings = new StdClass();
 			$settings->page = $page;
 			$settings->is_archive = false;
@@ -178,54 +175,82 @@
 				
 			} else {
 				
-				list($parsed_data, $counter, $gear, $chid) = $this->_parseCharacter($region, $realm, $toon, $settings);
+				// do we have multiple characters? if so, we need to trigger the multi-lookup..
 				
-				// set output variables..
-				$this->set('d', $parsed_data);
-				$this->set('counter', $counter);
-				$this->set('gear', $gear);
-				$this->set('set', $settings);
-				$this->set('modified', $parsed_data->lastModified / 1000);
+				if (strpos($toon,',') !== false) {
+					$toons = explode(",", $toon);
+					$parsed_datas = $gears = $counters = $modifieds = $urls = array();
+					
+					foreach ($toons as $single_toon) {
+						list($parsed_data, $counters[], $gears[], $chid) = $this->_parseCharacter($region, $realm, $single_toon, $settings);
+						$parsed_datas[] = $parsed_data;
+						$modifieds[] = $parsed_data->lastModified / 1000;
+						$urls[] = '/'.strtolower($region).'/'.strtolower($realm).'/'.strtolower($single_toon);
+					}
+
+					// set output variables..
+					$this->set('d', $parsed_datas);
+					$this->set('counter', $counters);
+					$this->set('gear', $gears);
+					$this->set('set', $settings);
+					$this->set('urls', $urls);
+					$this->set('modified', $modifieds);
+
+					$this->set('title_for_layout', 'Multiple Characters (' . strtoupper($region) . ')');
+					$this->render('multi');					
+
+				} else {
+
+					list($parsed_data, $counter, $gear, $chid) = $this->_parseCharacter($region, $realm, $toon, $settings);
+					
+					// set output variables..
+					$this->set('d', $parsed_data);
+					$this->set('counter', $counter);
+					$this->set('gear', $gear);
+					$this->set('set', $settings);
+					$this->set('modified', $parsed_data->lastModified / 1000);
+
+					switch($page) {
+						case "r":
+							$reputation_grid = $this->Profile->buildReputationTree($parsed_data);
+							$this->set('grid', $reputation_grid);
+							$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Reputation');
+							$this->render('reputation');
+							break;
+						case "v":
+							$achievement_grid = $this->Profile->buildAchievementTree($parsed_data);
+							$this->set('grid', $achievement_grid);
+							$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Achievements');
+							$this->render('achievements');
+							break;
+						case "t":
+							$talent_grid = $this->Profile->buildTalentGrid($parsed_data);
+							$this->set('grid', $talent_grid);
+							$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Talents');
+							$this->render('talents');
+							break;
+							
+						case "anonymize":
+							$anon_id = $this->Anons->anonymize($chid);
+							if ($anon_id) {
+								$this->redirect('/anon/'.$anon_id);
+								exit;								
+							} else {
+								$this->cakeError('e500', array('reason' => 'Something went wrong'));
+							}
 				
-				switch($page) {
-					case "r":
-						$reputation_grid = $this->Profile->buildReputationTree($parsed_data);
-						$this->set('grid', $reputation_grid);
-						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Reputation');
-						$this->render('reputation');
-						break;
-					case "v":
-						$achievement_grid = $this->Profile->buildAchievementTree($parsed_data);
-						$this->set('grid', $achievement_grid);
-						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Achievements');
-						$this->render('achievements');
-						break;
-					case "t":
-						$talent_grid = $this->Profile->buildTalentGrid($parsed_data);
-						$this->set('grid', $talent_grid);
-						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ') - Talents');
-						$this->render('talents');
-						break;
-						
-					case "anonymize":
-						$anon_id = $this->Anons->anonymize($chid);
-						if ($anon_id) {
-							$this->redirect('/anon/'.$anon_id);
-							exit;								
-						} else {
-							$this->cakeError('e500', array('reason' => 'Something went wrong'));
-						}
-			
-					default:
-						$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
-						$this->render('index');					
-						break;					
+						default:
+							$this->set('title_for_layout', $parsed_data->name . ' of ' . $parsed_data->realm . ' (' . strtoupper($region) . ')');
+							$this->render('index');					
+							break;					
+					}					
 				}
 			}
 		}
 		
 		
 		function _parseCharacter($region, $realm, $toon, $settings) {
+			
 			$character = $this->Characters->getByPath($region, $realm, $toon);
 			$url = $this->Curl->getBNETprefix($region) . "/wow/character/" . urlencode($realm) . "/" . urlencode($toon) . "?fields=guild,stats,talents,items,reputation,achievements,professions,titles,pvp,mounts,companions,pets&rand=" . $this->rand_str(10);
 			list ($data, $info) = $this->Curl->getBNET($url, $character['Characters']['Last_Updated']);

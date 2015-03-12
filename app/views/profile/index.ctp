@@ -1,3 +1,5 @@
+
+
 	<div class="profile_content">
 
 		<?= $this->element('navigation/profile_top', array($d)); ?>

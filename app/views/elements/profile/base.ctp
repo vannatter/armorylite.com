@@ -1,7 +1,6 @@
-
 <div id="stats_base" class="stats stat_block">
-<div id="stats_head_base" class="stats_head_off stats_toggle" data-statname="base"><?= __('Base Statistics'); ?></div>
-<div style="display: none;" id="stats_main_base" class="stats_main"><center>
+<div id="stats_head_base" class="stats_head_base stats_head_off stats_toggle" data-statname="base" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><?= __('Base Statistics'); ?></div>
+<div style="display: none;" id="stats_main_base" class="stats_main_base stats_main" <?= ((@$i) ? " data-multi_id='" . $i . "' " : ''); ?>><center>
 
 	<table border="0" cellpadding="0" cellspacing="0" class="stat_table">
 		<tr class="stats_item">
