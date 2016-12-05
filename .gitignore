@@ -19,3 +19,5 @@
 /plugins
 /vendors
 ._*
+.idea/
+.idea/*

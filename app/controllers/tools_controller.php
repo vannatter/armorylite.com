@@ -13,7 +13,7 @@
 		}
 		
 		function getCharacterRaces($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/races";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/races?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -23,7 +23,7 @@
 		}
 		
 		function getCharacterClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 
 			echo "<pre>";
@@ -33,7 +33,7 @@
 		}		
 		
 		function getItemClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/item/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/item/classes?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -43,7 +43,7 @@
 		}
 
 		function getTalents($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			
 			echo "<pre>";
@@ -53,7 +53,7 @@
 		}
 
 		function updateCharacterClasses($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/character/classes?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 
 			$classes = json_decode($d);
@@ -79,7 +79,7 @@
 		
 		
 		function updateTalents($region="us") {
-			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents";
+			$url = $this->Curl->getBNETprefix($region) . "/wow/data/talents?";
 			list ($d, $i) = $this->Curl->getBNET($url);
 			$talents = json_decode($d);
 			
@@ -134,20 +134,34 @@
 					// parse class_talents
 					foreach ($t->talents as $talent_tier) {
 						foreach ($talent_tier as $talent) {
-							$talent_save = array();
-							$talent_save['class_id'] = $class_id;
-							$talent_save['tier'] = $talent->tier;
-							$talent_save['column'] = $talent->column;
-							$talent_save['spell_id'] = $talent->spell->id;
-							$talent_save['spell_name'] = $talent->spell->name;
-							$talent_save['spell_icon'] = $talent->spell->icon;
-							$talent_save['spell_description'] = $talent->spell->description;
-							$talent_save['spell_cast_time'] = $talent->spell->castTime;
-							$talent_save['spell_cooldown'] = ( (@$talent->spell->cooldown) ? @$talent->spell->cooldown : "");
-							$this->ClassTalents->create();
-							$this->ClassTalents->save($talent_save);
-							
-							$icon = $this->Curl->getIcon($talent->spell->icon);
+
+							foreach ($talent as $tt) {
+
+								if (@$tt->spec->name) {
+									$spec_info = $this->ClassSpecs->getBySpecNameClassID($tt->spec->name, $class_id);
+									$spec_id = $spec_info['ClassSpecs']['id'];
+								} else {
+									$spec_id = 0;
+								}
+
+								$talent_save = array();
+								$talent_save['class_id'] = $class_id;
+								$talent_save['tier'] = $tt->tier;
+								$talent_save['column'] = $tt->column;
+								$talent_save['spell_id'] = $tt->spell->id;
+								$talent_save['spell_name'] = $tt->spell->name;
+								$talent_save['spell_icon'] = $tt->spell->icon;
+								$talent_save['spell_description'] = $tt->spell->description;
+								$talent_save['spell_cast_time'] = $tt->spell->castTime;
+								$talent_save['spell_cooldown'] = ( (@$tt->spell->cooldown) ? @$tt->spell->cooldown : "");
+								$talent_save['spec_id'] = $spec_id;
+
+								$this->ClassTalents->create();
+								$this->ClassTalents->save($talent_save);
+								$icon = $this->Curl->getIcon($tt->spell->icon);
+								
+							}
+
 						}					
 					}					
 				}
