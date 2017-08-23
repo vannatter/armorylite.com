@@ -1,4 +1,5 @@
-<?
+<?php
+
 class AppError extends ErrorHandler { 
 
 	function e404($params) {

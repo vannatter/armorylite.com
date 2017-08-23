@@ -1,4 +1,4 @@
-<?
+<?php
 
 	class AjaxController extends AppController {
 		var $name = 'Ajax';

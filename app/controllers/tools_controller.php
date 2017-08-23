@@ -1,4 +1,4 @@
-<?
+<?php
 
 	class ToolsController extends AppController {
 		var $name = 'Tools';

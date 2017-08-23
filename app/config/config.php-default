@@ -1,4 +1,4 @@
-<?
+<?php
 	$config['Settings'] = array(
   	
   		'site_mode' => 2,	// 1 = online (live), 0 = offline (maintenance), 2 = development (debug on), 9 = beta (redirect to beta login / checker)

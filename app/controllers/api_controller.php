@@ -1,4 +1,4 @@
-<?
+<?php
 
 	class ApiController extends AppController {
 		var $name = 'Api';

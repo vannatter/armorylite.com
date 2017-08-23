@@ -1,4 +1,4 @@
-<?
+<?php
 	Router::connect('/', array('controller' => 'home', 'action' => 'index'));
 	Router::connect('/about.php', array('controller' => 'home', 'action' => 'about'));
 	Router::connect('/advertise.php', array('controller' => 'home', 'action' => 'advertise'));

@@ -1,4 +1,4 @@
-<?
+<?php
 	App::import('Core', 'Sanitize');
   
 	class AppController extends Controller {
